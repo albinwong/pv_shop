@@ -1,0 +1,21 @@
+<extend name="layout/home" />
+<block name="title"><title>全部品牌汇盟通宝科技</title></block>
+<block name="content">
+    <div class="banner banner_gdpp">
+            <div class="banner_pic">
+                <a class="swiper-slide-gdpp" href="安惠.html"><img class="baner_pic_gdpp" src="__PUBLIC__/home/img/baner-1.jpg"/></a>
+                <a class="swiper-slide-gdpp" href="安利.html"><img class="baner_pic_gdpp" src="__PUBLIC__/home/img/Anli/banner.jpg"/></a>
+                <a class="swiper-slide-gdpp" href="#"><img class="baner_pic_gdpp" src="__PUBLIC__/home/img/baner-wm.jpg"/></a>
+            </div>
+            <ul class="num">
+            </ul>
+    </div>
+    
+    <div class="gdpp">
+    	<foreach name="res" item="vo">
+        	<a class="inlogo" href="__URL__/glist?id={$vo.id}"><img class="inlg_pic" src="__PUBLIC__/Uploads/cate/{$vo.logo}"/></a>
+        </foreach>
+        <a class="inlogo" href="更多品牌.html"><img class="inlg_pic" src="__PUBLIC__/home/img/logo-gd.png"/></a>
+    </div>
+    <div style="padding-top:100px;"></div>
+</block>

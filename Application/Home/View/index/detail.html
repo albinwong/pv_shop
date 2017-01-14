@@ -1,0 +1,18 @@
+<extend name="layout/home" />
+<block name="title"><title>{$goods.gname}({$goods.size})</title></block>
+<block name="content">
+    <div class="pic"><img class="pic_pic" src="__ROOT__/Public/Uploads/goods/{$goods.pic}"/></div>
+    <div class="ad_name">
+        <p class="inad_name_t">{$goods.gname}({$goods.size})</p>
+        <p class="inad_name_m">产品编号: {$goods.gid}</p>
+        <p class="inad_name_m">产品规格: {$goods.size}</p>
+        <p class="inad_name_bl">&yen;{$goods.price}</p>
+        <p class="inad_name_br">通粉优惠：&yen;{$goods.fprice}+{$goods.pv}PV</p>
+    </div>
+    <p class="ad_cpms">产品描述：</p>
+    <div class="ad_cptd_u">{$goods.desc}</div>
+    <p class="ad_cptd">产品特点：</p>
+    <div class="ad_cptd_u">{$goods.special}</div>
+    <p class="ad_cptd">注意事项：</p>
+    <div class="ad_zysx_u ad_cptd_u">{$goods.notice}</div>
+</block>

@@ -1,0 +1,49 @@
+<extend name="layout/admin" />
+<block name="title"><title>用户列表页</title></block>
+<block name="content">
+	<div class="col-md-12 graphs">
+	    <div class="xs">
+	  		<h3>用户列表</h3>
+			<div class="bs-example4" data-example-id="simple-responsive-table">
+			    <div class="table-responsive">
+			      <table class="table table-bordered">
+			        <thead>
+			          <tr>
+			            <th>ID</th>
+			            <th>用户名</th>
+			            <th>E-mail</th>
+			            <th>地址</th>
+			            <th>手机号码</th>
+			            <th>注册时间</th>
+			            <th>权限</th>
+			            <th>头像</th>
+			            <th>操作</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			        <foreach name="res" item="vo" >
+			          <tr>
+			            <th scope="row">{$vo['id']}</th>
+			            <td>{$vo['username']}</td>
+			            <td>{$vo['email']}</td>
+			            <td>{$vo['address']}</td>
+			            <td>{$vo['phone']}</td>
+			            <td>{:date('Y-m-d h:i:s',$vo['regtime'])}</td>
+			            <td>{$vo['auth']}</td>
+			            <td><img src="__ROOT__/Public/Uploads/{$vo['pic']}" style="width:50px;" alt=""></td>
+			            <td>
+			            	<a href="{:U('admin/user/delete',array('id'=>$vo['id']))}">删除</a>||
+							<a href="{:U('admin/user/edit',array('id'=>$vo['id']))}">修改</a>
+						</td>
+			          </tr>
+			        </foreach>
+			        </tbody>
+			      </table>
+			      <div style="float:right;">
+			      	{$page}
+			      </div>
+			    </div>
+		  	</div>
+  		</div>
+   </div>
+</block>

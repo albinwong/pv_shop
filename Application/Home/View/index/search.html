@@ -1,0 +1,14 @@
+<extend name="layout/home" />
+<block name="title"><title>{$keyname}-商品搜索-汇盟通宝科技</title></block>
+<block name="content">
+	<div class="kong"></div>
+	<foreach name="res" item="vo">
+		 <a class="inal_ad" href="__URL__/detail?id={$vo.id}"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/><p class="inal_ad_p1">安惠维舒饮固体饮料</p><p class="inal_ad_p2">&yen;{$vo.price}</p><p class="inal_ad_p3">通粉优惠：&yen;300+98pv;</p></a>
+    <hr/>
+    </foreach>
+	<foreach name="res" item="vo">
+		 <a class="inal_ad" href="#"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/><p class="inal_ad_p1">安惠维舒饮固体饮料</p><p class="inal_ad_p2">&yen;{$vo.price}</p><p class="inal_ad_p3">通粉优惠：&yen;300+98pv;</p></a>
+    <hr/>
+    </foreach>
+    <div class="kong"></div>
+</block>

@@ -1,0 +1,83 @@
+<extend name="layout/home" />
+<block name="title"><title>{$zx.name}系列</title></block>
+<block name="content">
+    <div class="kong"></div>
+    <div class="alnav">
+        <div class="lal_ad">
+            <div class="al_ad">
+                <foreach name="cate" item="vo">
+                    <if condition="$key eq 0">
+                        <a class="inalnav active_nav" key="{$vo.id}" href="#">{$vo.name}</a>
+                    <else />
+                        <a class="inalnav" key="{$vo.id}" href="#">{$vo.name}</a>
+                    </if>
+                </foreach>
+            </div>
+        </div>
+    </div>
+    <div id="goods"></div>
+    <div class="gszj">
+    	<img class="gszj_l" src="__PUBLIC__/Uploads/cate/{$zx.logo}" />
+        <div class="gszj_m"></div>
+        <div class="gszj_r">企业证照</div>
+        <div class="gszj_b">{$zx.name}（中国）日用品有限公司未经许可不得转载或链接</div>
+    </div>
+    <script type="text/javascript">
+$(function(){
+    //页面加载完毕
+    var pid = $('.al_ad').find('.active_nav').attr('key');
+    // alert(pid);
+    if(pid){
+        $.ajax({
+            url:'ajax',
+            data:{'pid':pid},
+            dataType:'',
+            type:'POST',
+            success:function(mes){
+                // alert(mes);
+                if(mes!=1){
+                   var res = eval(mes);
+                   for(var i = 0;i<res.length;i++){
+                        var div = $('<a class="inal_ad" href="__URL__/detail?id='+res[i]['id']+'"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/'+res[i]['pic']+'"/><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
+                        $('#goods').prepend(div);
+                   }
+               }else{
+                    var div = $('<div style="font-size:22px;padding:20px;"><center>暂无商品</center></div>');
+                    $('#goods').prepend(div);
+               }
+            }
+        });
+    }
+    //切换分类
+    $('.al_ad').eq(0).show().siblings().hide();
+    $('.inalnav').click(function(){
+        $(this).addClass("active_nav").siblings().removeClass("active_nav");
+        var sy=$(this).index();
+        $(".al_ad").eq(sy).show().siblings().hide();
+        var pid = $('.al_ad').find('.active_nav').attr('key');
+        $('#goods').text('');
+        if(pid){
+            $.ajax({
+                url:'ajax',
+                data:{'pid':pid},
+                dataType:'',
+                type:'POST',
+                success:function(mes){
+                    if(mes!=1){
+                       var res = eval(mes);
+                       for(var i = 0;i<res.length;i++){
+                            var div = $('<a class="inal_ad" href="__URL__/detail?id='+res[i]['id']+'"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/'+res[i]['pic']+'"/><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
+                            $('#goods').prepend(div);
+                       }
+                   }else{
+                        var div = $('<div style="font-size:22px;padding:20px;"><center>暂无商品</center></div>');
+                        $('#goods').prepend(div);
+                   }
+                }
+            });
+        }
+    });
+    
+});
+    </script>
+</block>

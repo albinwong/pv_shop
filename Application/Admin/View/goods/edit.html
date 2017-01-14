@@ -1,0 +1,122 @@
+<extend name="layout/admin" />
+<block name="title"><title>商品添加</title></block>
+<block name="content">
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/admin/ueditor/lang/zh-cn/zh-cn.js"></script>
+	<div class="graphs">
+	    <div class="xs">
+	  	    <h3>商品添加</h3>
+	  	    <div class="tab-content">
+				<div class="tab-pane active" id="horizontal-form">
+					<form class="form-horizontal" action="__URL__/update"  enctype="multipart/form-data" method="post">
+						<div class="form-group">
+							<label for="selector1" class="col-sm-2 control-label">商品类别</label>
+							<div class="col-sm-8">
+								<select name="pid" id="selector1" class="form-control1">
+									<option value="0">请选择:</option>
+									<foreach name="res2" item="vo">
+										<option value="{$vo.id}">&nbsp;{$vo.name}</option>
+									</foreach>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">商品名称</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品名称" type="text" name="gname" value="{$res.gname}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">产品编号</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品编号" type="text" name="gid" value="{$res.gid}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">产品规格</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品规格" type="text" name="size" value="{$res.size}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">商品正价</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品正价" type="text" name="price" value="{$res.price}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">商品优惠价</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品优惠价" type="text" name="fprice"  value="{$res.fprice}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">积分价</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品优惠价" type="text" name="pv"  value="{$res.pv}">
+							</div>
+						</div>
+						<div class="form-group">
+					        <label for="txtarea1" class="col-sm-2 control-label">产品图片</label>
+							<div class="col-sm-8">
+						        <input name="pic" type="file" multiple><img src="__ROOT__/Public/Uploads/goods/{$res.pic}" alt="">
+					        </div>
+					    </div>
+						<div class="form-group">
+							<label for="txtarea1" class="col-sm-2 control-label">产品描述</label>
+							<div class="col-sm-8">
+								<script id="editor1" name="desc" type="text/plain" style="width:700px;height:100px;">{$res.desc}</script>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtarea1" class="col-sm-2 control-label">产品特点</label>
+							<div class="col-sm-8">
+								<script id="editor2" name="special" type="text/plain" style="width:700px;height:100px;">{$res.special}</script>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="txtarea1" class="col-sm-2 control-label">注意事项</label>
+							<div class="col-sm-8">
+								<script id="editor3" name="notice" type="text/plain" style="width:700px;height:100px;">{$res.notice}</script>
+							</div>
+						</div>
+					    <div class="form-group">
+							<label for="radio" class="col-sm-2 control-label">商品状态</label>
+							<div class="col-sm-8">
+								<div class="radio-inline"><label><input type="radio" name="status" value="0" <if condition="$res.status eq 0">checked</if>> 新品</label></div>
+								<div class="radio-inline"><label><input type="radio" name="status" value="1" <if condition="$res.status eq 1">checked</if>> 上架</label></div>
+								<div class="radio-inline"><label><input type="radio" name="status" value="2" <if condition="$res.status eq 2">checked</if>> 下架</label></div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">库存</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品规格" type="text" name="repertory" value="{$res.repertory}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="focusedinput" class="col-sm-2 control-label">销量</label>
+							<div class="col-sm-8">
+								<input class="form-control1" id="focusedinput" placeholder="商品销量" type="text" name="sales" value="{$res.sales}">
+							</div>
+						</div>
+					    <div class="form-group">
+					    	<div class="col-sm-8 col-sm-offset-2">
+					    		<input type="hidden" name="id" value="{$res.id}">
+					    		<button class="btn btn-success" type="submit">提交</button>
+					    		<button class="btn btn-warning" type="reset">重置</button>
+					    	</div>
+					    </div>
+					</form>
+				</div>
+			</div>
+	  	</div>
+	</div>
+<script type="text/javascript">
+     var ue1 = UE.getEditor('editor1');
+     var ue2 = UE.getEditor('editor2');
+     var ue3 = UE.getEditor('editor3');
+</script>
+</block>

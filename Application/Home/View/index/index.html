@@ -1,0 +1,64 @@
+<extend name="layout/home" />
+<block name="title"><title>汇盟通宝科技</title></block>
+<block name="content">
+    <div class="banner">
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+                <foreach name="view" item="lb">
+                <if condition="$lb.status eq 0">
+            	   <a class="swiper-slide" href="__URL__/glist?id={$lb.cate_id}" style="background-image:url(__PUBLIC__/Uploads/banners/{$lb.pic})"></a>
+                </if>
+                </foreach>
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+        </div>
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                <foreach name="view" item="lb">
+                <if condition="$lb.status eq 0">
+                    <div class="swiper-slide" style="background-image:url(__PUBLIC__/Uploads/banners/{$lb.pic})"></div>
+                </if>
+                </foreach>
+            </div>
+        </div>
+    </div>
+    <div class="logo">
+        <foreach name="res" item="img">
+    	   <a class="inlogo" href="__URL__/glist?id={$img.id}"><img class="inlg_pic" src="__PUBLIC__/Uploads/cate/{$img.logo}"/></a>
+        </foreach>
+        <a class="inlogo" href="#"><img class="inlg_pic" src="__PUBLIC__/home/img/logo-gd.png"/></a>
+    </div>
+    <foreach name="res" item="vo">
+        <if condition="$key%2 eq 0">
+        	<a href="__URL__/glist?id={$vo.id}" class="inad_1">
+            	<ul class="inad_1_l">
+                	<li><img class="inad_pic1" src="__PUBLIC__/home/img/ad-1.png"/><p class="inad_jg">&yen;279</p></li>
+                    <li><img class="inad_pic1" src="__PUBLIC__/home/img/ad-2.png"/><p class="inad_jg">&yen;289</p></li>
+                    <li><img class="inad_pic1" src="__PUBLIC__/home/img/ad-3.png"/><p class="inad_jg">&yen;316</p></li>
+                </ul>
+                <div class="inad_1_r">
+                    <div class="inad_1_rt">{$vo.name}&nbsp;&nbsp;<b>&gt;</b></div>
+                    <div class="inad_1_rm">{$vo.intro}</div>
+                </div>
+            </a>
+        <else/>
+            <a href="__URL__/glist?id={$vo.id}" class="inad_1">
+                <div class="inad_1_rl">
+                    <div class="inad_1_rt">{$vo.name}&nbsp;&nbsp;<b>&gt;</b></div>
+                    <div class="inad_1_rm">{$vo.intro}</div>
+                </div>
+                <ul class="inad_1_l">
+                    <li><img class="inad_pic1" src="__PUBLIC__/home/img/Anli/adal-1.png"/><p class="inad_jg">&yen;320</p></li>
+                    <li><img class="inad_pic1" src="__PUBLIC__/home/img/Anli/adal-2.png"/><p class="inad_jg">&yen;228</p></li>
+                    <li><img class="inad_pic1" src="__PUBLIC__/home/img/Anli/adal-3.png"/><p class="inad_jg">&yen;320</p></li>
+                </ul>
+            </a>
+        </if>
+    </foreach>
+    <div class="gszj">
+    	<img class="gszj_l" src="__PUBLIC__/home/img/logo-ah.png"/>
+        <div class="gszj_m"></div>
+        <div class="gszj_r">企业证照</div>
+        <div class="gszj_b">Copyright &copy;安惠（中国）日用品有限公司未经许可不得转载或链接</div>
+    </div>
+</block>

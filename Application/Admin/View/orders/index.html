@@ -1,0 +1,42 @@
+<extend name="layout/admin" />
+<block name="title"><title>订单列表页</title></block>
+<block name="content">
+	<div class="col-md-12 graphs">
+	    <div class="xs">
+	  		<h3>订单列表</h3>
+			<div class="bs-example4" data-example-id="simple-responsive-table">
+			    <div class="table-responsive">
+			      <table class="table table-bordered">
+			        <thead>
+			          <tr>
+			            <th>订单号</th>
+			            <th>收货人</th>
+			            <th>联系电话</th>
+			            <th>订单时间</th>
+			            <th>订单状态</th>
+			            <th>操作</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			        <foreach name="res" item="vo" >
+			          <tr>
+			            <td scope="row">{$vo['oid']}</td>
+			            <td>{$vo['rec']}</td>
+			            <td>{$vo['tel']}</td>
+			            <td>{:date('Y年m月d日 h:i:s',$vo['otime'])}</td>
+			            <td>{$vo['status']|getOrderStatus}</td>
+			            <td>
+							<a href="{:U('admin/orders/detail',array('id'=>$vo['oid']))}">订单详情</a>
+						</td>
+			          </tr>
+			        </foreach>
+			        </tbody>
+			      </table>
+			      <div style="float:right;">
+			      	{$page}
+			      </div>
+			    </div>
+		  	</div>
+  		</div>
+   </div>
+</block>
