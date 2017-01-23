@@ -3363,3 +3363,39 @@ INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000573s ]
 INFO: [ app_begin ] --END-- [ RunTime:0.000636s ]
 ERR: 非法操作:待发货
 
+[ 2017-01-23T16:28:25+08:00 ] ::1 /work/pv_shop/index.php/Home/Index/waitPay
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000452s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000588s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000629s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\htdocs\work\pv_shop\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `orders` [ RunTime:0.005811s ]
+SQL: SELECT * FROM `orders` WHERE `uid` = 1 AND `status` = 0  [ RunTime:0.001269s ]
+SQL: SHOW COLUMNS FROM `order_detail` [ RunTime:0.005598s ]
+SQL: SELECT * FROM `order_detail` INNER JOIN orders on order_detail.oid = orders.oid  WHERE ( orders.oid=201701221746462739 )  [ RunTime:0.001686s ]
+SQL: SHOW COLUMNS FROM `goods` [ RunTime:0.005473s ]
+SQL: SELECT * FROM `goods` INNER JOIN order_detail on goods.id = order_detail.gid  WHERE ( goods.id=3 and order_detail.oid=201701221746462739 ) LIMIT 1   [ RunTime:0.001273s ]
+NOTIC: [8] Undefined index: zj D:\xampp\htdocs\work\pv_shop\Application\Home\Controller\IndexController.class.php 第 269 行.
+SQL: SELECT * FROM `order_detail` INNER JOIN orders on order_detail.oid = orders.oid  WHERE ( orders.oid=201701221750016323 )  [ RunTime:0.001046s ]
+SQL: SELECT * FROM `goods` INNER JOIN order_detail on goods.id = order_detail.gid  WHERE ( goods.id=3 and order_detail.oid=201701221750016323 ) LIMIT 1   [ RunTime:0.001049s ]
+NOTIC: [8] Undefined index: zj D:\xampp\htdocs\work\pv_shop\Application\Home\Controller\IndexController.class.php 第 269 行.
+SQL: SELECT * FROM `order_detail` INNER JOIN orders on order_detail.oid = orders.oid  WHERE ( orders.oid=201701221805175544 )  [ RunTime:0.001621s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampp\htdocs\work\pv_shop\Application\Home\Controller\IndexController.class.php 第 266 行.
+SQL: SELECT * FROM `order_detail` INNER JOIN orders on order_detail.oid = orders.oid  WHERE ( orders.oid=201701221805423766 )  [ RunTime:0.001149s ]
+SQL: SELECT * FROM `goods` INNER JOIN order_detail on goods.id = order_detail.gid  WHERE ( goods.id=1 and order_detail.oid=201701221805423766 ) LIMIT 1   [ RunTime:0.001630s ]
+NOTIC: [8] Undefined index: zj D:\xampp\htdocs\work\pv_shop\Application\Home\Controller\IndexController.class.php 第 269 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000057s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000103s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007785s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007867s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000368s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000403s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000547s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000586s ]
+
