@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* 通配设置 */
 *{ margin:0px; padding:0px; list-style-type:none;}
-body{ color:#333; font-size:12px; font-family:"微软雅黑","宋体"; background:#f6f5f5; width:100%; margin:auto;}
+body{ color:#333; font-size:20px; font-family:"微软雅黑","宋体"; background:#f6f5f5; width:100%; margin:auto;}
 a{ text-decoration:none;}
 img{ border:none;}
 /* 通配设置完 */
@@ -36,7 +36,7 @@ img{ border:none;}
 .inad_1_u{ position:absolute; left:45%; top:0px;}
 .inad_1_mu{ margin:192px 0px; text-align:center; background:#667924; border:2px solid #FFF;}*/
 
-.inad_1{ display:block; width:100%; height:280px; background:url(../img/adbj-1.png) no-repeat left top;}
+.inad_1{ display:block; width:100%; height:360px; background:url(img/adbj-1.png) no-repeat left top;}
 .inad_1_l{ width:45%; height:230px; float:left; margin-top:46px; margin-left:5%;}
 .inad_1_l li{ width:33%; max-width:120px; float:left;}
 .inad_pic1{ width:80%; max-width:96px; margin-left:10%;}
@@ -89,6 +89,7 @@ img{ border:none;}
 .alnav{ width:100%; height:60px;}
 .inalnav{ display:block; width:25%; height:56px; background:#829a2e; line-height:56px; color:#FFF; font-size:30px; float:left; text-align:center;}
 .active_nav{ height:56px; line-height:56px; background:#f6f5f5; border:none; color:#667924;}
+
 .lal_ad{ width:100%;}
 .al_ad{ width:100%;}
 .inal_ad{ display:block; width:100%; height:180px; font-size:24px;}
@@ -166,7 +167,7 @@ img{ border:none;}
 .gwc_p7{ width:10%; margin-left:1%; line-height:90px; float:left; font-size:24px; font-weight:bold;}
 .gwc_p8{ width:13%; margin-left:12%; line-height:90px; float:left; font-size:24px; color:#666;font-weight:bold;}
 .gwc_p9{ width:16%; line-height:90px; float:left; font-size:24px; color:#fc7b08;font-weight:bold;}
-.gwc_p10{width:30%; height:90px; background:#fc7b08; line-height:90px; float:right; font-size:24px; color:#FFF;font-weight:bold; text-align:center;}
+.gwc_p10{ display:block;width:30%; height:90px; background:#fc7b08; line-height:90px; float:right; font-size:24px; color:#FFF;font-weight:bold; text-align:center;}
 /*购物车完*/
 
 
@@ -175,13 +176,13 @@ img{ border:none;}
 .banner_wd{ width:100%; margin-top:88px; position:relative;}
 .baner_pic_wd{ display:block; width:100%;}
 .baner_pic_wdtx{ display:block; width:15%; border:3px solid #829a2e; position:absolute; left:42%; top:20px;}
-.banner_wd_name{ width:100%; line-height:30px; text-align:center; position:absolute; left:0px; bottom:150px; color:#829a2e; font-size:20px;}
+.banner_wd_name{ width:100%; line-height:30px; text-align:center; position:absolute; left:0px; bottom:110px; color:#829a2e; font-size:20px;}
 .wd_wddd{ width:98%; line-height:40px; padding:0px 1%; background:#FFF; margin-top:10px; font-size:24px;}
 .inwd_wddd{ float:right; text-align:right; color:#999; font-size:20px}
 .wd_dfh{ width:100%; height:120px; background:#FFF; margin-top:5px; margin-bottom:20px;}
-.wd_dfh_a{ display:block; width:7%; max-width:96px; height:98px; float:left; margin:0px 9%;}
-.wd_dfh_apic{ display:block; width:76%; max-width:76px;margin-left:12%;}
-.wd_dfh_ap{ width:100%; text-align:center; color:#757575; font-size:30px;}
+.wd_dfh_a{ display:block; width:9%; max-width:96px; height:98px; float:left; margin:0px 8%;}
+.wd_dfh_apic{ display:block; width:76%; max-width:66px;margin-left:12%;}
+.wd_dfh_ap{ width:100%; text-align:center; color:#757575; font-size:24px;}
 .wd_jf{ width:98%; line-height:60px; padding:0px 1%; background:#FFF; margin-top:6px; font-size:28px; color:#829a2e;}
 .wd_jf_pic{ width:15%; float:right;}
 .kong{ width:100%; height:98px;}
@@ -217,4 +218,90 @@ img{ border:none;}
 .num{ position:absolute; width:100%; height:2%; left:0px; bottom:6%; text-align:center;}
 .num li{ display:inline-block; width:5%; height:10px; background:#FFF; border-radius:25%; margin-right:2%;}
 .num .active{ background:#009;}
+/*更多品牌完*/
 
+
+/*查询物流*/
+.wlcp{ width:90%; margin-top:88px; padding:2% 5%; height:180px;}
+.wlcp_pic{ width:20%; float:left; max-height:180px;}
+.wlcp p{ width:75%; font-size:36px; line-height:40px; margin-left:5%; float:left; color:#757575;}
+.wlcp p span{ margin-left:3%;}
+.wlcp .wlcp_p{ color:#333;}
+.wlcp_p1{ color:#4a9953;}
+.wlcp_p3{ color:#1b9ca4;}
+.psy{ width:90%; padding:2% 5%; background:#FFF; height:80px;}
+.psy_pic1{ width:8%; float:left;}
+.psy p{ width:75%; line-height:40px; color:#757575; font-size:36px; padding-left:6%; float:left; }
+.psy .psy_name{ color:#333;}
+.psy_pic2{ width:7%;}
+.clgg{ width:90%; padding:2% 5%; background:#FFF; height:60px; margin:26px auto; font-size:36px;}
+.clgg_pic{width:5%; float:left;}
+.clgg p{ float:left; margin-left:3%;}
+.clgg p span{ color:#1b9ca4;}
+.wljd{ width:100%; font-size:36px; margin-bottom:98px; color:#999;}
+.wljd li{ width:88%; padding:0px 6%;}
+.lvdian{ width:26px; height:26px; border-radius:26px; background:#000; position:relative; right:3%; top:50px;}
+.wljd li p{ width:100%;}
+.wljd_p2 span{ display:block; width:50%; float:left;}
+.zuixin{ color:#4a9953;}
+.lvdian_zx{ background:#4a9953;}
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	.wlcp p{font-size: 24px;}
+	.psy p{font-size: 24px;}
+	.clgg{font-size: 24px;}
+	.wljd_p1{font-size: 24px;}
+}
+/*查询物流完*/
+
+
+/*确认订单*/
+.dizhi{ width:94%; padding:10px 3%; height:100px; margin-top:88px; background:#fcfcfb;}
+.indz_pic1{ width:5%; float:left; margin-top:20px;}
+.indz_m{ width:80%; float:left; font-size:30px; margin:0px 5%;}
+.indz_mt{ width:100%; line-height:50px;}
+.indz_mt p{ width:50%; float:left;}
+.indz_mb{ width:100%; line-height:50px; overflow:hidden;}
+.indz_pic2{ width:5%; float:left; margin-top:20px;}
+.dzxz{ display:none; width:100%;}
+.dzxz li{ width:90%; height:100px; margin-left:10%; font-size:30px;}
+.indzxz_m{ width:82%; float:left;}
+.dzxz li input{ width:38px; height:38px; border-radius:50%; float:left; margin-top:30px;}
+.spxx{ width:100%; margin-top:30px; line-height:50px;}
+.spxx li{ width:94%; height:180px; padding:0px 3%; margin-top:10px; background:#fcfcfb;}
+.inspxx_pic{ width:20%; max-height:160px; float:left; margin-top:10px;}
+.inspxx_r{ width:70%; margin:10px 5%; float:left;}
+.inspxx_name{ width:100%; height:60px; font-size:30px;}
+.inspxx_jgl{ width:30%; height:100px; float:left; color:#fc7b08;}
+.inspxx_m{ width:25%; line-height:30px; float:left; margin:35px auto;}
+.inspxx_m p{ width:10%; float:left;}
+.inspxx_jgr{ width:30%; height:100px; float:left; color:#fc7b08;}
+.inspxx_sc{ display:block; width:15%; line-height:78px; float:left; font-size:36px; text-align:center; font-weight:bold;}
+.sphj{ width:94%; padding:0px 3%; height:150px; background:#FFF; line-height:50px; margin-top:30px;}
+.sphj p{ width:100%; height:50px;}
+.insphj_m span{ display:block; width:50%; float:left;}
+.insphj_b span{ display:block; width:33%; float:right; text-align:right;}
+.insphj_bt{}
+.spzj{ width:94%; padding:0px 3%; line-height:90px; margin-top:20px; background:#FFF; height:90px; margin-bottom:98px;}
+.spzj p{ width:66%; text-align:right; color:#fc7b08; font-size:30px; font-weight:bold; float:left; margin-right:6%;}
+.spzj input{ width:26%; height:80px; float:left; font-size:36px; background:#fc7b08; color:#FFF; border-radius:26px; font-family:"微软雅黑"; font-weight:bold; margin:5px auto;}
+.tjdz{ width:28%; height:60px; margin:0px 36%; font-size:36px; font-weight:bold; margin-top:30px;}
+.dizhi_djh{ background:#FFF;}
+.indztj{ width:94%; background:#FFC; height:260px; padding:0px 3%; line-height:60px; font-size:30px; position:absolute; top:210px; z-index:3; display:none;}
+.indztj input{ width:76%; float:right; height:50px; font-size:30px; overflow:hidden; margin-top:5px;}
+.indztj .tjdztj{ width:28%; margin:10px 36%; height:60px; font-size:36px; font-weight:bold; border-radius:10px;}
+/*确认订单完*/
+
+/*付款页面*/
+.tzqbdd{ display:block; width:15%; line-height:88px; position:absolute; left:83%; top:0px; font-size:36px; color:#FFF;}
+.qrje{ width:90%; padding:0px 5%; line-height:80px; background:#FFF; border-bottom:#ccc 1px solid; margin-top:90px; border-top:
+#ccc 1px solid; height:80px;}
+.qrje p{ float:left; width:50%;}
+.ddje_p2{ text-align:right; color:#fc7b08;}
+.xzzffs{ width:90%; line-height:50px; background:#FFF; margin-top:30px; padding:10px 5%;}
+.xzzffs li{ width:100%; font-size:30px; height:90px; border-bottom:#CCC 1px solid;}
+.zffs_pic{ width:10%; max-height:88px; float:left; margin-right:3%;}
+.xzzffs li p{ width:70%; height:50px;}
+.zffs_p2{ line-height:30px; font-size:22px; color:#999;}
+.xzzffs input{position:relative; width:36px; height:36px; left:88%; top:-80px; z-index:5;}
+.xzzffs_djh{ background:#ddd;}
+/*付款页面完*/

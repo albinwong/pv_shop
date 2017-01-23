@@ -1,0 +1,41 @@
+<extend name="layout/home" />
+<block name="title"><title>付款页面</title></block>
+<block name="header">
+	<div class="header">
+    	<a class="fanhui" href="#" onclick="javascript:history.back();">
+            <img class="hd_ltb" src="__PUBLIC__/home/img/tb-1.png"/>
+            <p class="hd_fh">返回</p>
+        </a>
+        <p class="hd_cpxq">汇盟收银</p>
+        <a class="tzqbdd" href="全部订单.html">全部订单</a>
+    </div>
+</block>
+<block name="content">
+    <div class="qrje">
+    	<p class="ddje_p1">订单金额</p>
+        <p class="ddje_p2">&yen;{$res.cash}+{$res.pv}pv</p>
+    </div>
+    
+    <ul class="xzzffs">支付方式
+    	<form action="__URL__/doPay" method="post">
+    	<li>
+            <img class="zffs_pic" src="__PUBLIC__/home/img/Wode/待付款.png"/>
+            <p>支付宝支付</p>
+            <p class="zffs_p2">支付宝安全支付</p>
+            <input type="radio" name="zffs" value="alipay" checked/>
+        </li>
+        <li>
+            <img class="zffs_pic" src="__PUBLIC__/home/img/Wode/待付款.png"/>
+            <p>零钱加积分支付</p>
+            <p class="zffs_p2">积分代你买单</p>
+            <input type="radio" name="zffs" value="blance" />
+        </li>
+        <li>
+            <br><br>
+            <input type="hidden" name="cash" value="{$res.cash}">
+            <input type="hidden" name="pv" value="{$res.pv}">
+            <input type="submit" value="去付款">
+        </li>
+        </form>
+    </ul>
+</block>

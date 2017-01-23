@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <title><?php echo ($goods["gname"]); ?>(<?php echo ($goods["size"]); ?>)</title>
-<link href="/work/Public/home/css/style.css" rel="stylesheet">
-<link href="/work/Public/home/css/swiper-3.4.1.min.css" rel="stylesheet">
-<script src="/work/Public/home/js/jquery-1.8.3.min.js" language="javascript"></script>
-<script src="/work/Public/home/js/swiper-3.4.1.min.js"></script>
-<script src="/work/Public/home/js/js.js"></script>
+<link href="/work/pv_shop/Public/home/css/style.css" rel="stylesheet">
+<link href="/work/pv_shop/Public/home/css/swiper-3.4.1.min.css" rel="stylesheet">
+<script src="/work/pv_shop/Public/home/js/jquery-1.8.3.min.js" language="javascript"></script>
+<script src="/work/pv_shop/Public/home/js/swiper-3.4.1.min.js"></script>
+<script src="/work/pv_shop/Public/home/js/js.js"></script>
 </head>
 <body>
     
         <div class="header">
-            <a class="fanhui_tb" href="#"><img class="hd_l" src="/work/Public/home/img/tb-1.png"/></a>
-                <form class="hd_m" action="/work/index.php/Home/Index/search" method="post">
+            <a class="fanhui_tb" href="/work/pv_shop/index.php/Home/Index/index"><img class="hd_l" src="/work/pv_shop/Public/home/img/tb-1.png"/></a>
+                <form class="hd_m" action="/work/pv_shop/index.php/Home/Index/search" method="post">
                     <input type="text" name="keyword" placeholder="请输入搜索内容">
                     <input type="submit" style="display:none;">
                 </form>
-            <img class="hd_r" src="/work/Public/home/img/tb-3.png"/>
+            <img class="hd_r" src="/work/pv_shop/Public/home/img/tb-3.png"/>
         </div>
     
     
-    <div class="pic"><img class="pic_pic" src="/work/Public/Uploads/goods/<?php echo ($goods["pic"]); ?>"/></div>
+    <div class="pic"><img class="pic_pic" src="/work/pv_shop/Public/Uploads/goods/<?php echo ($goods["pic"]); ?>"/></div>
     <div class="ad_name">
         <p class="inad_name_t"><?php echo ($goods["gname"]); ?>(<?php echo ($goods["size"]); ?>)</p>
         <p class="inad_name_m">产品编号: <?php echo ($goods["gid"]); ?></p>
@@ -37,12 +37,21 @@
     <div class="ad_zysx_u ad_cptd_u"><?php echo ($goods["notice"]); ?></div>
 
     
-        <div class="footer">
-            <a class="ft_a" href="/work/index.php/Home/Index/index"><img class="ft_1" src="/work/Public/home/img/tb-8.png"/><p class="ft_z">首页</p></a>
-            <a class="ft_a" href="/work/index.php/Home/Index/more"><img class="ft_1" src="/work/Public/home/img/tb-7.png"/><p class="ft_z">购物</p></a>
-            <a class="ft_a" href="/work/index.php/Home/Index/cart"><img class="ft_1" src="/work/Public/home/img/tb-6.png"/><p>购物车</p></a>
-            <a class="ft_a" href="/work/index.php/Home/Index/info"><img class="ft_1" src="/work/Public/home/img/tb-5.png"/><p class="ft_z">我的</p></a>
-        </div>
-    
+<div class="footer">
+    <a class="ft_2" href="<?php echo U('home/index/index');?>"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-8.png"/><p class="ft_z">首页</p></a>
+    <a class="ft_3" href="<?php echo U('home/index/info');?>"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-5.png"/><p class="ft_z">我的</p></a>
+    <a class="ft_5" href="/work/pv_shop/index.php/Home/Index/addCart?gid=<?php echo ($goods["id"]); ?>"><p class="ft_zgwc">加入购物车</p></a>
+    <a class="ft_6" href="#"><p class="ft_zgm">立即购买</p></a>
+</div>
+
 </body>
+<script type="text/javascript">
+$(function(){
+    $(".fanhui_tb").click(function(){
+        window.history.go(-1);
+        return false;
+    });
+
+});
+</script>
 </html>

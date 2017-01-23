@@ -20,6 +20,19 @@ $(document).ready(function(){
 	
 	
 	
+	
+	//选项卡效果
+	$(".al_ad").eq(0).show().siblings().hide();
+	$(".inalnav").click(function(){
+		$(this).addClass("active_nav").siblings().removeClass("active_nav");
+		var i=$(this).index();
+		$(".al_ad").eq(i).show().siblings().hide();
+		});
+	
+	
+	
+	
+	
 	//购物车编辑效果
 	$(".gwc_p2").click(function(){
 		var i=$(this).parents(".gwc_pp li").index();
@@ -65,6 +78,61 @@ $(document).ready(function(){
 	$(".banner_gdpp").mouseout(function(){
 		timer=setInterval(move,1000);
 		});
+	
+	
+	
+	
+	
+	//查看物流更新效果
+	$(".wljd li").eq(0).addClass("zuixin").siblings().removeClass("zuixin");
+	
+	
+	
+	//地址选择效果
+	$(".indz_pic2").click(function(){
+		$(".dzxz").css("display","block");
+		});
+	
+	$(".dzxz li").click(function(){
+		$(this).addClass("dizhi_djh").siblings().removeClass("dizhi_djh");
+		var b=$(this).attr("class");
+		if(b=="dizhi_djh"){
+			$(this).find("input[name=dzdxk][type=radio]").prop("checked","checked").siblings().removeAttr("checked");
+			}
+		$(".dzxz").css("display","none");	
+		});
+	
+	
+	//填写地址方式
+	$(".tjdz").click(function(){
+		$(".indztj").css("display","block");
+		});
+	$(".tjdztj").click(function(){
+		$(".indztj").css("display","none");
+		});
+	
+	
+	
+	
+	
+	
+	
+	//选择支付方式
+	$(".xzzffs li").click(function(){
+		$(this).addClass("xzzffs_djh").siblings().removeClass("xzzffs_djh");
+		var a=$(this).attr("class");
+		if(a=="xzzffs_djh"){
+			$(this).find("input[name=zffs][type=radio]").prop("checked","checked").siblings().removeAttr("checked");
+			}
+		
+		
+		});
+	
+	
+	//
+	
+	
+	
 	
 	
 	

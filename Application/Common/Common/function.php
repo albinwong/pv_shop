@@ -36,7 +36,7 @@
 	{
 		switch ($id) {
 			case '0':return '待付款';break;
-			case '1':return '已付款';break;
+			case '1':return '待发货';break;
 			case '2':return '待收货';break;
 			case '3':return '已收货,待评价';break;
 			default:return '订单完成';break;
@@ -50,16 +50,6 @@
 			return '不显示';
 		}
 	}
-
-
-
-	// function getUserAuth($id)
-	// {
-	// 	switch ($id) {
-	// 		case '0':return '未激活';break;
-	// 		case '1':return '会员';break;
-	// 		default:return '管理员';break;
-	// 	}
 
 	// }
 	
@@ -85,17 +75,5 @@
 	// 	return DB::table('pics')->where('goods_id',$goods_id)->value('path');
 	// }
 
-	
-
-	// 判断留言的类型
-	// function getNotesType($id)
-	// {
-	// 	switch($id){
-	// 		case '1':return '投诉';break;
-	// 		case '2':return '建议';break;
-	// 		case '3':return '意见';break;
-	// 		default:return '咨询';break;
-	// 	}
-	// }
 
  ?>

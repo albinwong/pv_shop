@@ -1,6 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
+use Think\Model;
 class IndexController extends Controller {
     public function index(){
     	$cate = M('cates');
@@ -16,7 +17,6 @@ class IndexController extends Controller {
      * 搜索页
      */
     public function search(){
-    	// dump($_POST);exit;
     	$goods = M('goods');
     	$cates = $goods->where("gname like "."'%".$_POST['keyword']."%'")->select();
     	// echo $goods->_SQL();
@@ -54,13 +54,10 @@ class IndexController extends Controller {
     }
 
 
-    // 机票订单信息自动填充
+
  	public function ajax(){
- 		// dump($_POST);exit;
  		$mod = M('goods');
     	$res = $mod->where('pid="'.$_POST['pid'].'"')->select();
-    	// echo $mod->_SQL();
-    	// dump($res);exit;
     	if(empty($res)){
     		echo 1;
     	}else{
@@ -79,17 +76,251 @@ class IndexController extends Controller {
  	}
 
  	/**
- 	 * 购物车
+ 	 * 添加购物车
  	 */
- 	public function cart(){
- 		$this->display();
+ 	public function addCart(){
+        // dump($_GET['gid']);exit;
+        $goods = M('goods');
+        //判断购物车中是否有这种商品
+        if(empty($_SESSION['pv_cart'][$_GET['gid']])){
+            $cart = $goods->where('id='.$_GET['gid'])->find();
+            //1.如果没有,从数据库中取出信息
+            $_SESSION['pv_cart'][$_GET['gid']] = $cart;
+            
+            //2.然后添加一项(数量)
+            $_SESSION['pv_cart'][$_GET['gid']]['count'] = 1;
+        }else{
+            //如果购物车中有这种商品,那么数量自动加1
+            $_SESSION['pv_cart'][$_GET['gid']]['count'] += 1;
+        }
+        // dump($_SESSION['cart']);exit;
+        redirect("detail/id/".$_GET['gid'].".html",1,"<script>alert('商品添加成功');</script>");
  	}
+
+    /**
+     * 购物车显示
+     */
+    public function cart(){
+        if(!empty($_SESSION['pv_cart'])){
+            //购物车中有商品时
+            $cate = M('pv_cates');
+            foreach($_SESSION['pv_cart'] as $k=>$v){
+                $cates = $cate->field('pid')->where('id='.$v['pid'])->select();
+                foreach($cates as $kk=>$vv){
+                    $cate_fid = $cate->field('id,name,logo')->where('id='.$vv['pid'])->find();
+                    $_SESSION['pv_cart'][$k]['cate'] = $cate_fid;
+                }
+                $_SESSION['pv_cart'][$k]['zyhj'] = $v['count']*$v['fprice'];
+                $_SESSION['pv_cart'][$k]['zjf'] = $v['count']*$v['pv'];
+            }
+            // dump($_SESSION['pv_cart']);exit;
+            $this->assign('cart',$_SESSION['pv_cart']);
+        }
+        $this->display();
+    }
+
+    /**
+     * 购物车结算
+     */
+    public function commit(){
+        foreach($_POST['dx'] as $k=>$v){
+            $order[$v] = $_SESSION['pv_cart'][$v];
+            // dump($_SESSION['pv_cart'][$v]);
+            // dump($v);
+        }
+        $_SESSION['gwc']  = $_POST['dx'];
+        // dump($order);exit;
+        $this->assign('order',$order);
+        $this->display();
+    }
+
+    /**
+     * 确认订单
+     */
+    public function doCommit(){
+        // $date[] = $_POST['xjzj'];
+
+        // dump($_POST);exit;
+        $tmp = date('YmdHis').rand(1000,9999);
+        //订单主表
+        $data['oid'] = $tmp;
+        $data['ormb'] = $_POST['xjzj'];//总现金
+        // $data['uid'] = $_SESSION['userInfo']['uid'];//登录用户ID
+        // $data['rec'] = ;//收货人
+        // $data['addr'] = ;//收货地址 
+        // $data['tel'] = ;//收货电话
+        $data['status'] = 0;//订单状态
+        //$data['usmg'] = ;//买家留言
+        $data['otime'] = time();
+        $data['opv'] = $_POST['jfzs'];//总积分
+        $order = M('orders');
+        $res = $order->add($data);
+        if($res){
+            unset($data);
+            //订单附属表
+            foreach($_SESSION['gwc'] as $k=>$v){
+                $data['oid'] = $tmp;
+                $data['gid'] = $v;
+                $data['buyprice'] = $_SESSION['pv_cart'][$v]['zyhj'];
+                $data['buycnt'] = $_SESSION['pv_cart'][$v]['count'];
+                $data['buypv'] = $_SESSION['pv_cart'][$v]['zjf'];
+                $order_detail = M('order_detail');
+                $res1 = $order_detail->add($data);
+                if($res1){
+                    unset($data);
+                    $cnt = $_SESSION['pv_cart'][$v]['count'];//购买数量
+                    $id = $_SESSION['pv_cart'][$v]['id'];//购买商品ID
+                    $Model = new Model();// 实例化一个model对象 没有对应任何数据表
+                    $res2 = $Model->execute("update goods set repertory = repertory - ".$cnt." where id = ".$id);
+                    $Model = new Model();// 实例化一个model对象 没有对应任何数据表
+                    $res3 = $Model->execute("update goods set sales = sales + ".$cnt." where id = ".$id);
+                    if($res2 && $res3){
+                        // echo 'success';
+                        unset($_SESSION['pv_cart'][$v]);
+                    }
+                }
+            }
+        }
+        if($res && $res1 && $res2 && $res3){
+            $this->redirect("index/pay", array('cash' => $_POST['xjzj'],'pv'=>$_POST['jfzs']), 5, '支付跳转中...');
+        }else{
+        //     // echo "error";
+            redirect('commit');
+        }
+    }
+
+    /**
+     * 支付页面
+     */
+    public function pay(){
+        // dump($_GET);exit;
+        $this->assign('res',$_GET);
+        $this->display();
+    }
+
+    /**
+     * 付款页面
+     */
+    public function doPay(){
+        dump($_POST);
+        echo '付款了';
+    }
+
 
  	/**
  	 * 我的
  	 */
  	public function info(){
+          /*  ["id"] => string(1) "1"
+              ["username"] => string(10) "adminadmin"
+              ["password"] => string(32) "e10adc3949ba59abbe56e057f20f883e"
+              ["email"] => string(16) "albinwong@qq.com"
+              ["pic"] => string(17) "586f53aec7c4c.png"
+              ["address"] => string(7) "shaanxi"
+              ["phone"] => string(11) "17865681111"
+              ["regtime"] => string(10) "1479672142"
+              ["role"] => string(1) "5"
+              ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/
+
+        // dump($_SESSION['adminuser']);exit;
+        // if(!empty($_SESSION['adminuser'])){
+        //     $user = M('users');
+        // }
+        $this->assign('user',$_SESSION['adminuser']);
  		$this->display();
  	}
+
+    /**
+     * 全部订单
+     */
+    public function allOrder(){
+        $order = M('orders');
+        $res = $order->where('uid='.$_SESSION['adminuser']['id'])->select();
+        foreach($res as $k=>$v){
+            $orders =M('order_detail');
+            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
+            foreach($res[$k]['goods'] as $kk=>$vv){
+                $good = M('goods');
+                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
+                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
+            }
+        }
+        $this->assign('order',$res);
+        $this->display();
+    }
+
+    /**
+     * 待付款
+     */
+    public function waitPay(){
+        //状态=0;
+        $order = M('orders');
+        $data['uid'] = $_SESSION['adminuser']['id'];
+        $data['status'] = 0;
+        $res = $order->where($data)->select();
+        echo $order->_SQL();
+        // dump($res);exit;
+        foreach($res as $k=>$v){
+            $orders = M('order_detail');
+            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
+            foreach($res[$k]['goods'] as $kk=>$vv){
+                $good = M('goods');
+                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
+                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
+            }
+        }
+        $this->assign('res',$res);
+        $this->display();
+    }
+
+    /**
+     * 待发货 status=1
+     */
+    public function send(){
+       $order = M('orders');
+        $data['uid'] = $_SESSION['adminuser']['id'];
+        $data['status'] = 1;
+        $res = $order->where($data)->select();
+        echo $order->_SQL();
+        // dump($res);exit;
+        foreach($res as $k=>$v){
+            $orders = M('order_detail');
+            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
+            foreach($res[$k]['goods'] as $kk=>$vv){
+                $good = M('goods');
+                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
+                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
+            }
+        }
+        dump($res);exit;
+        $this->assign('res',$res);
+        $this->display();
+    }
+
+    /**
+     * 待收货 status =2
+     */
+    public function rec(){
+        $order = M('orders');
+        $data['uid'] = $_SESSION['adminuser']['id'];
+        $data['status'] = 2;
+        $res = $order->where($data)->select();
+        echo $order->_SQL();
+        // dump($res);exit;
+        foreach($res as $k=>$v){
+            $orders = M('order_detail');
+            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
+            foreach($res[$k]['goods'] as $kk=>$vv){
+                $good = M('goods');
+                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
+                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
+            }
+            // echo $res2->_SQL();
+        }
+        dump($res);exit;
+        $this->assign('res',$res);
+        $this->display();
+    }
+
 
 }

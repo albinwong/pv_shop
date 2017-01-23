@@ -104,6 +104,7 @@ class UserController extends CommonController {
      * 用户验证
      */
  	public function update(){
+ 		// dump($_POST);exit;
  		//进行表单验证
 		$rules = array(
 			array('username','require','用户名不能为空！'), 
@@ -122,7 +123,7 @@ class UserController extends CommonController {
 			$upload = new \Think\Upload();//实例化上传类
 	 		$upload->maxSize = 3145728;//设置附件上传大小
 	 		$upload->exts = array('jpg','gif','png','jpeg');//设置附件上传类型
-	 		$upload->rootPath = './Public/Uploads/';//设置附件上传目录
+	 		$upload->rootPath = './Public/Uploads/user/';//设置附件上传目录
 	 		$upload->autoSub = false;//拒绝子目录创建
 	 		// 上传文件
 	 		$info = $upload->upload();
@@ -132,7 +133,7 @@ class UserController extends CommonController {
 	 			$data['pic'] = $pic;
 	 		}
 	 		// dump($data);exit;
-			$res = $User->save($data); 
+			$res = $User->save($data);
 			if($res){
 	 			//成功跳转
 	 			$this->success('修改成功',U('admin/user/index'),5);

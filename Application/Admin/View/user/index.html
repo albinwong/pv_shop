@@ -30,7 +30,7 @@
 			            <td>{$vo['phone']}</td>
 			            <td>{:date('Y-m-d h:i:s',$vo['regtime'])}</td>
 			            <td>{$vo['auth']}</td>
-			            <td><img src="__ROOT__/Public/Uploads/{$vo['pic']}" style="width:50px;" alt=""></td>
+			            <td><img src="__ROOT__/Public/Uploads/user/{$vo['pic']}" style="width:50px;" alt=""></td>
 			            <td>
 			            	<a href="{:U('admin/user/delete',array('id'=>$vo['id']))}">删除</a>||
 							<a href="{:U('admin/user/edit',array('id'=>$vo['id']))}">修改</a>

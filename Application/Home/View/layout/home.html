@@ -12,7 +12,7 @@
 <body>
     <block name="header">
         <div class="header">
-            <a class="fanhui_tb" href="#"><img class="hd_l" src="__PUBLIC__/home/img/tb-1.png"/></a>
+            <a class="fanhui_tb" href="__URL__/index"><img class="hd_l" src="__PUBLIC__/home/img/tb-1.png"/></a>
                 <form class="hd_m" action="__URL__/search" method="post">
                     <input type="text" name="keyword" placeholder="请输入搜索内容">
                     <input type="submit" style="display:none;">
@@ -30,4 +30,13 @@
         </div>
     </block>
 </body>
+<script type="text/javascript">
+$(function(){
+    $(".fanhui_tb").click(function(){
+        window.history.go(-1);
+        return false;
+    });
+
+});
+</script>
 </html>

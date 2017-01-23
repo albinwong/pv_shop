@@ -8,22 +8,22 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="/work/Public/admin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="/work/pv_shop/Public/admin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="/work/Public/admin/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/work/pv_shop/Public/admin/css/style.css" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="/work/Public/admin/css/lines.css" rel='stylesheet' type='text/css' />
-<link href="/work/Public/admin/css/font-awesome.css" rel="stylesheet"> 
+<link href="/work/pv_shop/Public/admin/css/lines.css" rel='stylesheet' type='text/css' />
+<link href="/work/pv_shop/Public/admin/css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
-<script src="/work/Public/admin/js/jquery.min.js"></script>
+<script src="/work/pv_shop/Public/admin/js/jquery.min.js"></script>
 <!-- Nav CSS -->
-<link href="/work/Public/admin/css/custom.css" rel="stylesheet">
+<link href="/work/pv_shop/Public/admin/css/custom.css" rel="stylesheet">
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/work/Public/admin/js/metisMenu.min.js"></script>
-<script src="/work/Public/admin/js/custom.js"></script>
+<script src="/work/pv_shop/Public/admin/js/metisMenu.min.js"></script>
+<script src="/work/pv_shop/Public/admin/js/custom.js"></script>
 <!-- Graph JavaScript -->
-<script src="/work/Public/admin/js/d3.v3.js"></script>
-<script src="/work/Public/admin/js/rickshaw.js"></script>
+<script src="/work/pv_shop/Public/admin/js/d3.v3.js"></script>
+<script src="/work/pv_shop/Public/admin/js/rickshaw.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/1.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/1.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 								<span class="label label-info">NEW</span>
@@ -61,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/2.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/2.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 								<span class="label label-info">NEW</span>
@@ -69,28 +69,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/3.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/3.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 							</a>
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/4.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/4.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 							</a>
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/5.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/5.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 							</a>
 						</li>
 						<li class="avatar">
 							<a href="#">
-								<img src="/work/Public/admin/images/pic1.png" alt=""/>
+								<img src="/work/pv_shop/Public/admin/images/pic1.png" alt=""/>
 								<div>New message</div>
 								<small>1 minute ago</small>
 							</a>
@@ -101,7 +101,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	        		</ul>
 	      		</li>
 			    <li class="dropdown">
-	        		<a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"><img src="/work/Public/admin/images/1.png"><span class="badge">9</span></a>
+	        		<a href="#" class="dropdown-toggle avatar" data-toggle="dropdown"><img src="/work/pv_shop/Public/admin/images/1.png"><span class="badge">9</span></a>
 	        		<ul class="dropdown-menu">
 						<li class="dropdown-menu-header text-center">
 							<strong>Account</strong>
@@ -168,11 +168,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                         <li>
+                        <li>
                             <a href="#"><i class="fa fa-check-square-o nav_icon"></i>订单管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="<?php echo U('admin/orders/index');?>">订单列表</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-check-square-o nav_icon"></i>轮播管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?php echo U('admin/view/index');?>">轮播列表</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo U('admin/view/add');?>">添加轮播</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -226,6 +238,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     <!-- /#wrapper -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="/work/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/work/pv_shop/Public/admin/js/bootstrap.min.js"></script>
 </body>
 </html>

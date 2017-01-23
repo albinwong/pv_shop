@@ -1,0 +1,125 @@
+<extend name="layout/home" />
+<block name="title"><title>订单确认页</title></block>
+<block name="content">
+    <div class="dizhi">
+    	<img class="indz_pic1" src="__PUBLIC__/home/img/tb-dz.png"/>
+        <div class="indz_m">
+        	<div class="indz_mt">
+            	<p>收货人：***</p>
+                <p>15789074563</p>
+            </div>
+            <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
+        </div>
+        <img class="indz_pic2" src="__PUBLIC__/home/img/tb-xb.png"/>
+    </div>
+    
+    <ul class="dzxz">
+    <form>
+    	<li>
+        	<div class="indzxz_m">
+                <div class="indz_mt">
+                    <p>收货人：***</p>
+                    <p>15789074563</p>
+                </div>
+                <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
+        	</div>
+            <input type="radio" name="dzdxk" checked/>
+        </li>
+        <li>
+        	<div class="indzxz_m">
+                <div class="indz_mt">
+                    <p>收货人：***</p>
+                    <p>15789074563</p>
+                </div>
+                <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
+        	</div>
+            <input type="radio" name="dzdxk"/>
+        </li>
+        <a class="tjdz">添加地址</a>
+    </form>
+    </ul>
+    <div class="indztj">
+    	<form>
+        	<p>请输入地址<input class="dz" type="text" name="dz"/></p>
+            <p>电话<input class="dh" type="text" name="dh"/></p>
+            <p>收货人<input class="shr" type="text" name="shr"/></p>
+            <input class="tjdztj" name="tjdztj" type="submit" value="提交"/>
+        </form>
+    </div>
+    <ul class="spxx">
+    <foreach name="order" item="vo">
+        	<li>
+            	<img class="inspxx_pic" src="__PUBLIC__/Uploads/goods/{$vo['pic']}"/>
+                <div class="inspxx_r">
+                    <div class="inspxx_name">{$vo['gname']}({$vo['size']})</div>
+                    <div class="inspxx_jg">
+                        <div class="inspxx_jgl">
+                        	<p>&yen;{$vo.price}</p>
+                            <p>&yen;{$vo.fprice}+{$vo.pv}pv</p>
+                        </div>
+                        <div class="inspxx_m">
+                            <p>-</p>
+                            <p>{$vo.count}</p>
+                            <p>+</p>
+                        </div>
+                        <div class="inspxx_jgr">
+                        	<p>&yen;{$vo[price]*$vo['count']}</p>
+                            <p>&yen;{$vo['zyhj']}+{$vo['zjf']}pv</p>
+                        </div>
+                        <a class="inspxx_sc" href="#">删除</a>
+                    </div>
+                </div>
+            </li>
+    </foreach>
+    </ul>
+    <div class="sphj">
+    	<p>此商品性质不支持7天退货</p>
+        <p class="insphj_m">
+        	<span>配送方式</span>
+            <span>快递</span>
+        </p>
+        <p class="insphj_b">
+        	<span class="insphj_bt">合计：￥（含运费￥0.00）</span>
+            <span>共{:count($order)}件商品</span>
+        </p>
+    </div>
+    
+    <div class="spzj">
+    	<p>总计：&yen;</p>
+        <form action="__URL__/doCommit" method="post">
+            <input type="hidden" name="xjzj" value="">
+            <input type="hidden" name="jfzs" value="">
+        	<input type="submit"  value="提交订单"/>
+        </form>
+    </div>
+    <script type="text/javascript">
+        var xj = $('.inspxx_jgr p:nth-child(2)').text();// ¥800+320pv¥800+320pv¥14+415pv¥400+160pv
+        var arr = xj.split('¥');//["", "800+320pv", "800+320pv", "14+415pv", "400+160pv"]
+        arr.shift();//[ "800+320pv", "800+320pv", "14+415pv", "400+160pv"]
+        var brr = [];//[["800", "320pv"], ["800", "320pv"], ["14", "415pv"], ["400", "160pv"]]
+        var crr = [];
+        var drr = [];
+        for(var i = 0; i<arr.length;i++){
+            brr[i] = arr[i].split('+');
+            for(var j =0;j<brr[i].length;j++){
+                if(j%2==0){
+                    crr[i] = brr[i][j];//["800", "800", "14", "400"]2140
+                }else{
+                    drr[i] = brr[i][j].split('pv').shift();// [["320", ""], ["320", ""], ["415", ""], ["160", ""]]1215
+                }
+            }
+        }
+        var crr_total = 0;
+        for(var i=0;i<crr.length;i++){
+            crr_total+=parseInt(crr[i]);
+        }
+        var drr_total = 0;
+        for(var i = 0;i<drr.length;i++){
+            drr_total+=parseInt(drr[i]);
+        }
+        $('input[name=xjzj]').val(crr_total);
+        $('input[name=jfzs]').val(drr_total);
+        var total = $('.insphj_bt').text('合计：￥'+crr_total+'+'+drr_total+'PV（含运费￥0.00）');
+        var zj = $('.spzj p:first-child').text('总计:¥'+crr_total+'+'+drr_total+'PV');
+    </script>
+</block>

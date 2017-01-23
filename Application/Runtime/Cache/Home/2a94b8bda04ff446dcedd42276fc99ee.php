@@ -12,7 +12,7 @@
 <body>
     
         <div class="header">
-            <a class="fanhui_tb" href="#"><img class="hd_l" src="/work/pv_shop/Public/home/img/tb-1.png"/></a>
+            <a class="fanhui_tb" href="/work/pv_shop/index.php/Home/Index/index"><img class="hd_l" src="/work/pv_shop/Public/home/img/tb-1.png"/></a>
                 <form class="hd_m" action="/work/pv_shop/index.php/Home/Index/search" method="post">
                     <input type="text" name="keyword" placeholder="请输入搜索内容">
                     <input type="submit" style="display:none;">
@@ -77,4 +77,13 @@
         </div>
     
 </body>
+<script type="text/javascript">
+$(function(){
+    $(".fanhui_tb").click(function(){
+        window.history.go(-1);
+        return false;
+    });
+
+});
+</script>
 </html>

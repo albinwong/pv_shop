@@ -15,19 +15,28 @@
             width: 100%;
         }
     </style>
+   <!--  /*["id"] => string(1) "1"
+  ["username"] => string(10) "adminadmin"
+  ["password"] => string(32) "e10adc3949ba59abbe56e057f20f883e"
+  ["email"] => string(16) "albinwong@qq.com"
+  ["pic"] => string(17) "586f53aec7c4c.png"
+  ["address"] => string(7) "shaanxi"
+  ["phone"] => string(11) "17865681111"
+  ["regtime"] => string(10) "1479672142"
+  ["role"] => string(1) "5"
+  ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/ -->
     <div class="banner_wd">
     	<img class="baner_pic_wd" src="__PUBLIC__/home/img/Wode/baner_02.jpg"/>
-        <img class="baner_pic_wdtx" src="__PUBLIC__/home/img/Wode/我的_03.jpg"/>
-        <p class="banner_wd_name">汇盟通宝：13983625783</p>
+        <img class="baner_pic_wdtx" src="__PUBLIC__/Uploads/user/{$user['pic']}"/>
+        <p class="banner_wd_name">汇盟通宝：{$user.phone}</p>
     </div>
     
-    <div class="wd_wddd">我的订单<p class="inwd_wddd">查看全部订单&gt;</p></div>
+    <div class="wd_wddd">我的订单<p class="inwd_wddd"><a href="__URL__/allOrder">查看全部订单</a>&gt;</p></div>
     
     <div class="wd_dfh">
-    	<a class="wd_dfh_a" href="待付款.html"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待付款.png"/><p class="wd_dfh_ap_info">待付款</p></a>
-        <a class="wd_dfh_a" href="待发货.html"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待发货.png"/><p class="wd_dfh_ap_info">待发货</p></a>
-        <a class="wd_dfh_a" href="待发货.html"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待收货.png"/><p class="wd_dfh_ap_info">待收货</p></a>
-        <a class="wd_dfh_a" href="待评价.html"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/花.png"/><p class="wd_dfh_ap_info">待评价</p></a>
+    	<a class="wd_dfh_a" href="__URL__/waitPay"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待付款.png"/><p class="wd_dfh_ap_info">待付款</p></a>
+        <a class="wd_dfh_a" href="__URL__/send"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待发货.png"/><p class="wd_dfh_ap_info">待发货</p></a>
+        <a class="wd_dfh_a" href="__URL__/rec"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/待收货.png"/><p class="wd_dfh_ap_info">待收货</p></a>
     </div>
     
     <div class="wd_jf">我的积分<p class="wd_jf_pic">1000</p></div>
