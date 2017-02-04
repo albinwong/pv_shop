@@ -1,5 +1,5 @@
 <extend name="layout/home" />
-<block name="title"><title>全部品牌汇盟通宝科技</title></block>
+<block name="title"><title>全部品牌-汇盟通宝科技</title></block>
 <block name="content">
     <div class="banner banner_gdpp">
             <div class="banner_pic">
@@ -15,7 +15,7 @@
     	<foreach name="res" item="vo">
         	<a class="inlogo" href="__URL__/glist?id={$vo.id}"><img class="inlg_pic" src="__PUBLIC__/Uploads/cate/{$vo.logo}"/></a>
         </foreach>
-        <a class="inlogo" href="更多品牌.html"><img class="inlg_pic" src="__PUBLIC__/home/img/logo-gd.png"/></a>
+        <a class="inlogo" href="__URL__/more"><img class="inlg_pic" src="__PUBLIC__/home/img/logo-gd.png"/></a>
     </div>
     <div style="padding-top:100px;"></div>
 </block>

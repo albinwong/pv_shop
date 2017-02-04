@@ -3,11 +3,21 @@ namespace Home\Controller;
 use Think\Controller;
 use Think\Model;
 class IndexController extends Controller {
+    public function _empty(){
+        redirect('/Home/index/index');
+    }
+
     public function index(){
+        // echo "<pre>";
+        // dump($_SESSION['adminuser']);exit;
     	$cate = M('cates');
     	$res = $cate->where('pid=0')->select();
     	$view = M('view');
     	$lunbo = $view->select();
+        $rec = M('recommend');
+        foreach($res as $k=>$v){
+            $res[$k]['tj'] = $rec->where("cate_id = ".$v['id']." and  status = 1")->limit(2)->order('id desc')->select();
+        }
     	$this->assign('res',$res);
     	$this->assign('view',$lunbo);
         $this->display();
@@ -17,7 +27,12 @@ class IndexController extends Controller {
      * 搜索页
      */
     public function search(){
+        dump($_POST['keyword']);exit;
+        // echo I('post.keyword');
     	$goods = M('goods');
+        if(empty($_POST['keyword'])){
+
+        }
     	$cates = $goods->where("gname like "."'%".$_POST['keyword']."%'")->select();
     	// echo $goods->_SQL();
     	// dump($cates);exit;
@@ -29,8 +44,7 @@ class IndexController extends Controller {
     /**
      * 商品列表页
      */
-    public function glist()
-    {
+    public function glist(){
     	//读取分类
     	$cate = M('cates');
     	$pm_cate = $cate->where('id='.$_GET['id'])->find();
@@ -44,8 +58,7 @@ class IndexController extends Controller {
     /**
      * 商品详情
      */
-    public function detail()
-    {
+    public function detail($id = 0){
     	// 根据id读取商品详细信息
     	$one = M('goods');
     	$goods = $one->where('id='.$_GET['id'])->find();
@@ -79,7 +92,6 @@ class IndexController extends Controller {
  	 * 添加购物车
  	 */
  	public function addCart(){
-        // dump($_GET['gid']);exit;
         $goods = M('goods');
         //判断购物车中是否有这种商品
         if(empty($_SESSION['pv_cart'][$_GET['gid']])){
@@ -123,13 +135,18 @@ class IndexController extends Controller {
      * 购物车结算
      */
     public function commit(){
+        $addr = M('address');
+        $addr_isdefault = $addr->where('user_id='.$_SESSION['adminuser']['id'].' and isdefault = 1')->find();
+        $user_addr = $addr->where('user_id='.$_SESSION['adminuser']['id'].' and isdefault = 0')->select();
+         
         foreach($_POST['dx'] as $k=>$v){
             $order[$v] = $_SESSION['pv_cart'][$v];
             // dump($_SESSION['pv_cart'][$v]);
             // dump($v);
         }
         $_SESSION['gwc']  = $_POST['dx'];
-        // dump($order);exit;
+        $this->assign('addr',$addr_isdefault);
+        $this->assign('addrs',$user_addr);
         $this->assign('order',$order);
         $this->display();
     }
@@ -139,16 +156,24 @@ class IndexController extends Controller {
      */
     public function doCommit(){
         // $date[] = $_POST['xjzj'];
-
         // dump($_POST);exit;
+        $addr = M('address');
+        $add = $addr->where('user_id='.$_SESSION['adminuser']['id'].' and isdefault = 1')->find();
+        $add['uid'] = $add['user_id'];
+        $add['rec'] = $add['name'];
+        $add['tel'] = $add['number'];
+        $add['addr'] = $add['detail'];
+        unset($add['id']);
+        unset($add['user_id']);
+        unset($add['name']);
+        unset($add['number']);
+        unset($add['isdefault']);
+        unset($add['detail']);
+        $data = $add;
         $tmp = date('YmdHis').rand(1000,9999);
         //订单主表
         $data['oid'] = $tmp;
         $data['ormb'] = $_POST['xjzj'];//总现金
-        // $data['uid'] = $_SESSION['userInfo']['uid'];//登录用户ID
-        // $data['rec'] = ;//收货人
-        // $data['addr'] = ;//收货地址 
-        // $data['tel'] = ;//收货电话
         $data['status'] = 0;//订单状态
         //$data['usmg'] = ;//买家留言
         $data['otime'] = time();
@@ -202,125 +227,11 @@ class IndexController extends Controller {
      * 付款页面
      */
     public function doPay(){
+        redirect('index');
         dump($_POST);
         echo '付款了';
     }
 
-
- 	/**
- 	 * 我的
- 	 */
- 	public function info(){
-          /*  ["id"] => string(1) "1"
-              ["username"] => string(10) "adminadmin"
-              ["password"] => string(32) "e10adc3949ba59abbe56e057f20f883e"
-              ["email"] => string(16) "albinwong@qq.com"
-              ["pic"] => string(17) "586f53aec7c4c.png"
-              ["address"] => string(7) "shaanxi"
-              ["phone"] => string(11) "17865681111"
-              ["regtime"] => string(10) "1479672142"
-              ["role"] => string(1) "5"
-              ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/
-
-        // dump($_SESSION['adminuser']);exit;
-        // if(!empty($_SESSION['adminuser'])){
-        //     $user = M('users');
-        // }
-        $this->assign('user',$_SESSION['adminuser']);
- 		$this->display();
- 	}
-
-    /**
-     * 全部订单
-     */
-    public function allOrder(){
-        $order = M('orders');
-        $res = $order->where('uid='.$_SESSION['adminuser']['id'])->select();
-        foreach($res as $k=>$v){
-            $orders =M('order_detail');
-            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
-            foreach($res[$k]['goods'] as $kk=>$vv){
-                $good = M('goods');
-                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
-                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
-            }
-        }
-        $this->assign('order',$res);
-        $this->display();
-    }
-
-    /**
-     * 待付款
-     */
-    public function waitPay(){
-        //状态=0;
-        $order = M('orders');
-        $data['uid'] = $_SESSION['adminuser']['id'];
-        $data['status'] = 0;
-        $res = $order->where($data)->select();
-        echo $order->_SQL();
-        // dump($res);exit;
-        foreach($res as $k=>$v){
-            $orders = M('order_detail');
-            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
-            foreach($res[$k]['goods'] as $kk=>$vv){
-                $good = M('goods');
-                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
-                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
-            }
-        }
-        $this->assign('res',$res);
-        $this->display();
-    }
-
-    /**
-     * 待发货 status=1
-     */
-    public function send(){
-       $order = M('orders');
-        $data['uid'] = $_SESSION['adminuser']['id'];
-        $data['status'] = 1;
-        $res = $order->where($data)->select();
-        echo $order->_SQL();
-        // dump($res);exit;
-        foreach($res as $k=>$v){
-            $orders = M('order_detail');
-            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
-            foreach($res[$k]['goods'] as $kk=>$vv){
-                $good = M('goods');
-                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
-                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
-            }
-        }
-        dump($res);exit;
-        $this->assign('res',$res);
-        $this->display();
-    }
-
-    /**
-     * 待收货 status =2
-     */
-    public function rec(){
-        $order = M('orders');
-        $data['uid'] = $_SESSION['adminuser']['id'];
-        $data['status'] = 2;
-        $res = $order->where($data)->select();
-        echo $order->_SQL();
-        // dump($res);exit;
-        foreach($res as $k=>$v){
-            $orders = M('order_detail');
-            $res[$k]['goods'] = $orders->join('orders on order_detail.oid = orders.oid')->where('orders.oid='.$v['oid'])->select();
-            foreach($res[$k]['goods'] as $kk=>$vv){
-                $good = M('goods');
-                $res[$k]['goods'][$kk] = $good->join('order_detail on goods.id = order_detail.gid')->where('goods.id='.$vv['gid'].' and order_detail.oid='.$v['oid'])->find();
-                $res[$k]['zj'] += $res[$k]['goods'][$kk]['buycnt'];
-            }
-            // echo $res2->_SQL();
-        }
-        dump($res);exit;
-        $this->assign('res',$res);
-        $this->display();
-    }
 
 
 }

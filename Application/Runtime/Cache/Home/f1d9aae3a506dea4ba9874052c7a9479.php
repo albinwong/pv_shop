@@ -48,19 +48,41 @@
                 <div class="wd_cp_gj">
                 	<p class="wd_cp_gjp1">共<?php echo ($all["zj"]); ?>件商品</p>
                     <p class="wd_cp_gjp2">合计：&yen;<?php echo ($all["ormb"]); ?>+<?php echo ($all["opv"]); ?>PV（含运费：&yen;0.00）</p>
-                    <a class="wd_cp_fk" href="#">确认收货</a>
-                    <a class="wd_cp_fk wd_cp_fk01" href="查看物流.html">查看物流</a>
-                    <a class="wd_cp_fk wd_cp_fk01" href="#">延长收货</a>
+                    <?php if($all['status'] == 0): ?><form action="/work/pv_shop/index.php/Home/Index/pay" method="get"><input type="hidden" name="cash" value="<?php echo ($all["ormb"]); ?>"><input type="hidden" name="pv" value="<?php echo ($all["opv"]); ?>"><input class="wd_cp_fk" type="submit" value="去付款"></form>
+                        <?php elseif($all['status'] == 1): ?>
+                            <a class="wd_cp_fk" id="remind_send">提醒卖家发货</a>
+                        <?php elseif($all['status'] == 2): ?>
+                            <a class="wd_cp_fk" id="shkey" oid="<?php echo ($all["oid"]); ?>">确认收货</a>
+                            <a class="wd_cp_fk wd_cp_fk01" href="/work/pv_shop/index.php/Home/Index/trade">查看物流</a>
+                            <a class="wd_cp_fk wd_cp_fk01" href="#">延长收货</a>
+                        <?php else: ?>完成<?php endif; ?>
                 </div>
-                <!-- <script type="text/javascript">
-                var a = $('.gwc_p5').text();
-                // for()
-                console.log(a);
-                </script> -->
             </li>
         <div class="kong"></div><?php endforeach; endif; ?>
     </ul>
-
+    <div class="kong"></div>
+    <script type="text/javascript">
+    $('#shkey').click(function(){
+        if(confirm('确认收货')){
+            var oid = $(this).attr('oid');
+            $.ajax({
+            url:'orderStatus',
+            data:{'oid':oid},
+            dataType:'',
+            type:'POST',
+            success:function(mes){
+                if(mes){
+                    alert('交易完成!');
+                    location.reload();
+                }
+            }
+            });
+        }
+    });
+    $('#remind_send').click(function(){
+        alert('已催促商家发货!');
+    });
+    </script>
 
     
         <div class="footer">

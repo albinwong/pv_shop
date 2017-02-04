@@ -1,0 +1,39 @@
+<extend name="layout/home" />
+<block name="title"><title>查看物流</title></block>
+<block name="header">
+	<div class="header">
+    	<a class="fanhui" onClick="javascript:window.history.back()">
+            <img class="hd_ltb" src="__PUBLIC__/home/img/tb-1.png"/>
+            <p class="hd_fh">返回</p>
+        </a>
+        <p class="hd_cpxq">查看物流</p>
+        <img class="hd_r" src="__PUBLIC__/home/img/tb-3.png"/>
+    </div>
+</block>
+<block name="content">
+    <div class="wlcp">
+        <p class="wlcp_p">物流状态：<span class="wlcp_p1">商家已发货</span></p>
+        <p>承运来源：<span>韵达快递</span></p>
+        <p>运单编号：<span>{$no}</span></p>
+        <p>官方电话：<span class="wlcp_p3">暂无</span></p>
+    </div>
+    <!-- <div class="psy">
+    	<img class="psy_pic1" src="__PUBLIC__/home/img/psy.png"/>
+        <p>派送员</p>
+        <p class="psy_name">王春</p>
+        <img class="psy_pic2" src="__PUBLIC__/home/img/tb_dh.png"/>
+    </div>
+    <div class="clgg">
+    	<img class="clgg_pic" src="__PUBLIC__/home/img/tb_ck.png"/>
+        <p>本数据由<span>菜鸟裹裹</span>提供</p>
+    </div> -->
+    <ul class="wljd">
+        <foreach name="data" item="res">
+        	<li>
+            	<div class="lvdian"></div>
+            	<p class="wljd_p1"><span>{$res.context}</span></p>
+                <p class="wljd_p2"><span>{$res.time}</span></p>
+            </li>
+        </foreach>
+    </ul>
+</block>

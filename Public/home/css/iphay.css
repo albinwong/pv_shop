@@ -1,0 +1,62 @@
+
+.baner{ padding-top: 60px;}
+.swiper-pagination-bullet-active {background: #11c5d1;}
+.swiper-pagination-fraction,.swiper-pagination-custom,.swiper-container-horizontal>.swiper-pagination-bullets{
+bottom: 3px;}
+.swiper-container {width: 100%; padding-top: 60px; margin: auto;}
+
+@media all and (max-width:320px) {
+	.swiper-container,.foruminner .swiper-container {height: 128px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 128px;max-width: 420px;min-width: 300px;}
+}
+
+@media all and (min-width:321px) and (max-width:360px) {
+	.swiper-container,.foruminner .swiper-container {height: 144px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 144px;max-width: 420px;min-width: 300px;}
+}
+
+@media all and (min-width:361px) and (max-width:375px) {
+	.swiper-container,.foruminner .swiper-container {height: 150px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 150px;max-width: 420px;min-width: 300px;}
+}
+
+@media all and (min-width:376px) and (max-width:414px) {
+	.swiper-container,.foruminner .swiper-container {height: 165px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 165px;max-width: 420px;min-width: 300px;}
+}
+@media all and (min-width:415px) and (max-width:640px) {
+	.swiper-container,.foruminner .swiper-container {height: 210px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 210px;max-width: 640px;min-width: 300px;}
+}
+@media all and (min-width:641px) and (max-width:780px) {
+	.swiper-container,.foruminner .swiper-container {height: 255px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 255px;max-width: 780px;min-width: 300px;}
+}
+@media all and (min-width:781px) and (max-width:1024px) {
+	.swiper-container,.foruminner .swiper-container {height: 330px;}
+	.swiper-container img,.foruminner .swiper-container img {width: 100%;height: 330px;max-width: 1024px;min-width: 300px;}
+}
+.swiper-wrapper {text-align: center;}
+.smallswiper {width: 100%;height: 90px;margin-bottom: 10px;border-top: 1px solid #ddd;border-bottom: 1px solid #ddd;}
+.smallswiper img {width: 100%;min-height: 90px;}
+
+.alnav{ width:100%; height:60px;}
+.inalnav{ display:block; width:25%; height:56px; background:#829a2e; line-height:56px; color:#FFF; font-size:1.2rem; float:left; text-align:center;}
+.active_nav{ height:56px; line-height:56px; background:#f6f5f5; border:none; color:#667924;}
+
+.lal_ad{ width:100%;}
+.al_ad{ width:100%;}
+.inal_ad{ display:block; width:100%; height:180px; font-size:0.8rem;}
+.inal_ad_pic{ display:block; width:28%; max-height:140px; max-width: 150px; float:left; margin:20px 2%;}
+.inal_ad_p1{ width:50%; height:50px; margin-left:9%; margin-top:15px; line-height:50px; font-weight:bold; float:left; color:#333;}
+.inal_ad_p2{ width:50%; height:40px; margin-left:9%; font-size:1.0rem; color:#fc7b08; line-height:40px; font-weight:bold; float:left;}
+.inal_ad_p3{ width:48%; padding-left:1%; height:30px; margin-left:9%; margin-top:10px; background:#fc7b08; line-height:30px; color:#FFF; float:left;}
+.gszj{ width:100%; padding-top:20px; background:#acc949; padding-bottom:90px;}
+.gszj_l{ width:18%; max-height: 36px; margin-left:30%; float:left;}
+.gszj_m{ width:1%; height:36px; background:#CCC; float:left; margin:0px 1%;}
+.gszj_r{ width:48%; height:36px; line-height:36px; font-size:1.2rem; float:left;}
+.gszj_b{ width:100%; height: 30px; line-height:30px; text-align:center; font-size: 0.8rem;}
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	.inalnav{font-size: 1.0rem;}
+	.inal_ad_pic{ margin-top:36px; max-height: 120px;}
+}

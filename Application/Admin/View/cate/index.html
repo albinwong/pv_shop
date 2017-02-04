@@ -21,7 +21,10 @@
 			        <foreach name="res" item="vo" >
 			          <tr>
 			            <th scope="row">{$vo['id']}</th>
-			            <td><img src="__PUBLIC__/Uploads/cate/{$vo['logo']}" style="width:110%;" alt=""></td>
+			            <td>
+			            	<if condition="!empty($vo['logo'])"><img src="__PUBLIC__/Uploads/cate/{$vo['logo']}" style="width:110%;" alt="">
+			           		</if>
+			            </td>
 			            <td>{$vo['name']}</td>
 			            <td>{$vo['pid']|getCateName}</td>
 			            <td>

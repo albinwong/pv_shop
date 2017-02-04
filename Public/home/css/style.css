@@ -36,7 +36,7 @@ img{ border:none;}
 .inad_1_u{ position:absolute; left:45%; top:0px;}
 .inad_1_mu{ margin:192px 0px; text-align:center; background:#667924; border:2px solid #FFF;}*/
 
-.inad_1{ display:block; width:100%; height:360px; background:url(img/adbj-1.png) no-repeat left top;}
+.inad_1{ display:block; width:100%; height:360px; background:url(../img/adbj-1.png) no-repeat left top;}
 .inad_1_l{ width:45%; height:230px; float:left; margin-top:46px; margin-left:5%;}
 .inad_1_l li{ width:33%; max-width:120px; float:left;}
 .inad_pic1{ width:80%; max-width:96px; margin-left:10%;}

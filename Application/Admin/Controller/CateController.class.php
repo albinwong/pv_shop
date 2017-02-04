@@ -119,7 +119,7 @@ class CateController extends CommonController {
  	}
 
  	/**
-     * 用户验证
+     * 分类修改验证
      */
  	public function update(){
  		//进行表单验证

@@ -11,72 +11,48 @@
 </head>
 <body>
     
-	<div class="header">
-    	<a class="fanhui" onClick="javascript:window.history.back()">
-            <img class="hd_ltb" src="img/tb-1.png"/>
+    <div class="header">
+        <a class="fanhui" onClick="javascript:window.history.back()">
+            <img class="hd_ltb" src="/work/pv_shop/Public/home/img/tb-1.png"/>
             <p class="hd_fh">返回</p>
         </a>
         <p class="hd_cpxq">我的</p>
-        <img class="hd_r" src="img/tb-3.png"/>
+        <img class="hd_r" src="/work/pv_shop/Public/home/img/tb-3.png"/>
     </div>
 
     
     <div class="wd_nav">
-    	<a class="wd_nav_a" href="全部订单.html">全部订单</a>
-        <a class="wd_nav_a wd_nav_active" href="待付款.html">待付款</a>
-        <a class="wd_nav_a" href="待发货.html">待发货</a>
-        <a class="wd_nav_a" href="待评价.html">待评价</a>
+        <a class="wd_nav_a" href="/work/pv_shop/index.php/Home/Index/allOrder">全部订单</a>
+        <a class="wd_nav_a wd_nav_active" href="/work/pv_shop/index.php/Home/Index/waitPay">待付款</a>
+        <a class="wd_nav_a" href="/work/pv_shop/index.php/Home/Index/send">待发货</a>
+        <a class="wd_nav_a" href="/work/pv_shop/index.php/Home/Index/rec">待收货</a>
     </div>
-    
     <ul class="wd_pp">
-    	<li>
-        	<div class="gwc_pp_t">
-                <img class="gwc_pic" src="img/logo-al.png"/>
-                <p class="gwc_p1">安利&gt;</p>
-                <p class="gwc_p11">待付款</p>
-            </div>
-        	<ul class="gwc_sp">
-            	<li>
-                	<img class="gwc_pic_cp" src="img/Anli/安利产品详情页_03.jpg"/>
-                    <div class="gwc_cp_xs">
-                        <p class="gwc_p3">安利多种植物蛋白粉(770克)</p>
-                        <p class="gwc_p4">&yen;560.00</p>
-                        <p class="gwc_p5">&times;1</p>
-                        <p class="gwc_p6">通粉优惠：&yen;400+160PV</p>
-                    </div> 
-                </li>
-            </ul>
-            <div class="wd_cp_gj">
-            	<p class="wd_cp_gjp1">共1件商品</p>
-                <p class="wd_cp_gjp2">合计：&yen;560（含运费：&yen;0.00）</p>
-                <a class="wd_cp_fk" href="确认订单.html">付款</a>
-            </div>
-        </li>
-        <li>
-            <div class="gwc_pp_t">
-                <img class="gwc_pic" src="img/logo-ah.png"/>
-                <p class="gwc_p1">安惠&gt;</p>
-                <p class="gwc_p11">待付款</p>
-            </div>
-        	<ul class="gwc_sp">
-            	<li>
-                	<img class="gwc_pic_cp" src="img/Anli/安利产品详情页_03.jpg"/>
-                    <div class="gwc_cp_xs">
-                        <p class="gwc_p3">安利多种植物蛋白粉(770克)</p>
-                        <p class="gwc_p4">&yen;560.00</p>
-                        <p class="gwc_p5">&times;1</p>
-                        <p class="gwc_p6">通粉优惠：&yen;400+160PV</p>
-                    </div>
-                </li>
-            </ul>
-            <div class="wd_cp_gj">
-            	<p class="wd_cp_gjp1">共1件商品</p>
-                <p class="wd_cp_gjp2">合计：&yen;560（含运费：&yen;0.00）</p>
-                <a class="wd_cp_fk" href="确认订单.html">付款</a>
-            </div>
-        </li>
+        <?php if(!empty($order)): if(is_array($order)): foreach($order as $key=>$all): ?><li>
+                <?php if(is_array($all[goods])): foreach($all[goods] as $key=>$goods): ?><ul class="gwc_sp">
+                    	<li>
+                        	<img class="gwc_pic_cp" src="/work/pv_shop/Public/Uploads/goods/<?php echo ($goods["pic"]); ?>"/>
+                            <div class="gwc_cp_xs">
+                                <p class="gwc_p3"><?php echo ($goods["gname"]); ?>(<?php echo ($goods["size"]); ?>)</p>
+                                <p class="gwc_p4">&yen;<?php echo ($goods['buyprice']+$goods['buypv']); ?></p>
+                                <p class="gwc_p5">&times;<?php echo ($goods["buycnt"]); ?></p>
+                                <p class="gwc_p6">通粉优惠：&yen;<?php echo ($goods["buyprice"]); ?>+<?php echo ($goods["buypv"]); ?>PV</p>
+                            </div> 
+                        </li>
+                    </ul><?php endforeach; endif; ?>
+                <div class="wd_cp_gj">
+                	<p class="wd_cp_gjp1">共<?php echo ($all["zj"]); ?>件商品</p>
+                    <p class="wd_cp_gjp2">合计：&yen;<?php echo ($all["ormb"]); ?>+<?php echo ($all["opv"]); ?>PV（含运费：&yen;0.00）</p>
+                    <form action="/work/pv_shop/index.php/Home/Index/pay" method="get">
+                        <input type="hidden" name="cash" value="<?php echo ($all["ormb"]); ?>">
+                        <input type="hidden" name="pv" value="<?php echo ($all["opv"]); ?>">
+                        <input class="wd_cp_fk" type="submit" value="去付款">
+                    </form>
+                </div>
+            </li>
+            <div class="kong"></div><?php endforeach; endif; ?>
+        <?php else: ?><div class="wd_cp_gj">没有发货的订单哦~</div><?php endif; ?>
     </ul>
-    
     <div class="kong"></div>
 
     

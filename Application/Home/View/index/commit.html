@@ -5,71 +5,69 @@
     	<img class="indz_pic1" src="__PUBLIC__/home/img/tb-dz.png"/>
         <div class="indz_m">
         	<div class="indz_mt">
-            	<p>收货人：***</p>
-                <p>15789074563</p>
+            	<p>收货人：{$addr.name}</p>
+                <p>{$addr.number}</p>
             </div>
-            <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
+            <div class="indz_mb">收货地址：{$addr.prov|getAreaName}{$addr.city|getAreaName}{$addr.xian|getAreaName}{$addr.detail}</div>
         </div>
         <img class="indz_pic2" src="__PUBLIC__/home/img/tb-xb.png"/>
     </div>
-    
     <ul class="dzxz">
     <form>
-    	<li>
-        	<div class="indzxz_m">
-                <div class="indz_mt">
-                    <p>收货人：***</p>
-                    <p>15789074563</p>
-                </div>
-                <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
-        	</div>
-            <input type="radio" name="dzdxk" checked/>
-        </li>
-        <li>
-        	<div class="indzxz_m">
-                <div class="indz_mt">
-                    <p>收货人：***</p>
-                    <p>15789074563</p>
-                </div>
-                <div class="indz_mb">收货地址：重庆市渝北区金山大道</div>
-        	</div>
-            <input type="radio" name="dzdxk"/>
-        </li>
+        <foreach name="addrs" item="addrs">
+        	<li>
+            	<div class="indzxz_m">
+                    <div class="indz_mt">
+                        <p>收货人：{$addrs.name}</p>
+                        <p>{$addrs.number}</p>
+                    </div>
+                    <div class="indz_mb">收货地址：{$addrs.prov|getAreaName}{$addrs.city|getAreaName}{$addrs.xian|getAreaName}{$addrs.detail}</div>
+            	</div>
+                <input type="radio" key={$addrs.id} name="dzdxk"/>
+            </li>
+        </foreach>
         <a class="tjdz">添加地址</a>
     </form>
     </ul>
     <div class="indztj">
-    	<form>
-        	<p>请输入地址<input class="dz" type="text" name="dz"/></p>
-            <p>电话<input class="dh" type="text" name="dh"/></p>
-            <p>收货人<input class="shr" type="text" name="shr"/></p>
-            <input class="tjdztj" name="tjdztj" type="submit" value="提交"/>
+    	<form action="__MODULE__/address/addAddress" method="post">
+            <p>所在地区
+                <select name="prov" id="prov"></select>
+                <select name="city" id="city"></select>
+                <select name="xian" id="xian"></select>
+            </p>
+        	<p>请输入地址<input class="dz" disabled type="text" name="detail"/></p>
+            <p>电话<input class="dh" type="text" name="number"/></p>
+            <p>收货人<input class="shr" type="text" name="name"/></p>
+            <input type="hidden" name="user_id" value="{$_SESSION['adminuser']['id']}" />
+            <input type="hidden" name="isdefault" value="1">
+            <input class="tjdztj" type="submit" value="提交"/>
         </form>
     </div>
     <ul class="spxx">
     <foreach name="order" item="vo">
-        	<li>
-            	<img class="inspxx_pic" src="__PUBLIC__/Uploads/goods/{$vo['pic']}"/>
-                <div class="inspxx_r">
-                    <div class="inspxx_name">{$vo['gname']}({$vo['size']})</div>
-                    <div class="inspxx_jg">
-                        <div class="inspxx_jgl">
-                        	<p>&yen;{$vo.price}</p>
-                            <p>&yen;{$vo.fprice}+{$vo.pv}pv</p>
-                        </div>
-                        <div class="inspxx_m">
-                            <p>-</p>
-                            <p>{$vo.count}</p>
-                            <p>+</p>
-                        </div>
-                        <div class="inspxx_jgr">
-                        	<p>&yen;{$vo[price]*$vo['count']}</p>
-                            <p>&yen;{$vo['zyhj']}+{$vo['zjf']}pv</p>
-                        </div>
-                        <a class="inspxx_sc" href="#">删除</a>
+    	<li>
+        	<img class="inspxx_pic" src="__PUBLIC__/Uploads/goods/{$vo['pic']}"/>
+            <div class="inspxx_r">
+                <div class="inspxx_name">{$vo['gname']}({$vo['size']})</div>
+                <div class="inspxx_jg">
+                    <div class="inspxx_jgl">
+                    	<p>&yen;{$vo.price}</p>
+                        <p>&yen;{$vo.fprice}+{$vo.pv}pv</p>
                     </div>
+                    <div class="inspxx_m">
+                        <p>-</p>
+                        <p>{$vo.count}</p>
+                        <p>+</p>
+                    </div>
+                    <div class="inspxx_jgr">
+                    	<p>&yen;{$vo[price]*$vo['count']}</p>
+                        <p>&yen;{$vo['zyhj']}+{$vo['zjf']}pv</p>
+                    </div>
+                    <a class="inspxx_sc" href="#">删除</a>
                 </div>
-            </li>
+            </div>
+        </li>
     </foreach>
     </ul>
     <div class="sphj">
@@ -79,7 +77,7 @@
             <span>快递</span>
         </p>
         <p class="insphj_b">
-        	<span class="insphj_bt">合计：￥（含运费￥0.00）</span>
+        	<span class="insphj_bt">合计：￥0（含运费￥0.00）</span>
             <span>共{:count($order)}件商品</span>
         </p>
     </div>
@@ -93,6 +91,8 @@
         </form>
     </div>
     <script type="text/javascript">
+    $(function(){
+    //获取订单总价
         var xj = $('.inspxx_jgr p:nth-child(2)').text();// ¥800+320pv¥800+320pv¥14+415pv¥400+160pv
         var arr = xj.split('¥');//["", "800+320pv", "800+320pv", "14+415pv", "400+160pv"]
         arr.shift();//[ "800+320pv", "800+320pv", "14+415pv", "400+160pv"]
@@ -121,5 +121,53 @@
         $('input[name=jfzs]').val(drr_total);
         var total = $('.insphj_bt').text('合计：￥'+crr_total+'+'+drr_total+'PV（含运费￥0.00）');
         var zj = $('.spzj p:first-child').text('总计:¥'+crr_total+'+'+drr_total+'PV');
+
+    //默认地址修改
+    $('input[name=dzdxk]').click(function(){
+        var aid = $(this).attr('key');
+        $.get("__MODULE__/address/upAddr",{'aid':aid},function(mes){
+            location.reload();
+        });
+    });
+
+    //添加收货地址
+        $('.tjdz').click(function(){
+            $.get("__MODULE__/address/address",{'pid':0},function(data){
+                // 遍历数据进行添加
+                for(var i=0;i<data.length;i++){
+                var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
+                $('#prov').append(op);
+                }
+            },'json');
+        });
+        $('#prov').change(function(){
+            // 获取当前省的id
+            var pid = $(this).val();
+            // 通过省的id去获取市的内容
+            $.get("__MODULE__/address/address",{'pid':pid},function(data){
+                $('#city').empty();
+                // 遍历数据进行添加
+                for(var i=0;i<data.length;i++){
+                    var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
+                    $('#city').append(op);
+                }
+            },'json');
+            $('input[name=detail]').removeAttr('disabled');
+        });
+        $('#city').change(function(){
+            // 获取当前省的id
+            var pid = $(this).val();
+            // 通过省的id去获取市的内容
+            $.get("__MODULE__/address/address",{'pid':pid},function(data){
+                $('#xian').empty();
+                // 遍历数据进行添加
+                for(var i=0;i<data.length;i++){
+                    var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
+                    $('#xian').append(op);
+                }
+            },'json');
+        });
+    }); 
     </script>
+
 </block>

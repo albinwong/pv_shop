@@ -1,0 +1,111 @@
+<extend name="layout/home" />
+<block name="title"><title>{$zx.name}系列</title></block>
+<script language="JavaScript">
+$(document).ready(function(){
+	 $(document).ready(function() {
+      var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        autoplay: 1000,
+        paginationClickable: true
+      });
+
+  });
+  
+  window.onload = function(){
+	  var maodian = sessionStorage["maodian"];
+	  if(maodian != null && maodian != ""){
+		  var sub = document.getElementById(maodian);
+		  sub.click();
+	  }
+	  setTimeout(function(){sessionStorage["maodian"] = "";},1000);
+	      
+  }
+  
+ 
+  $(".al_ad").eq(0).show().siblings().hide();
+	$(".inalnav").click(function(){
+		$(this).addClass("active_nav").siblings().removeClass("active_nav");
+		var i=$(this).index();
+		$(".al_ad").eq(i).show().siblings().hide();
+		});
+  
+  });
+</script>
+<block name="content">
+		<div class="weui_tab">
+			<header class="weui_cell" style="background: #829a2e; position: fixed; top:0px; width: 98%; z-index: 3;">
+		        <div class="weui_cell_hd" onclick="javascript:window.history.back()" >
+		            <img src="../Img/icon/tb-1.png" alt="">
+		        </div>
+		        <div class="weui_cell_bd weui_cell_primary" style="background: #ffffff; border-radius: 8px; text-align: center;">
+		            <form>
+		                <input type="text" value="请输入" />
+		            </form>
+		        </div>
+		        <div class="pull-right person-icon">
+		            <img src="../Img/icon/tb-3.png" alt="" />
+		        </div>
+		    </header>
+		    
+		    <div class="alnav">
+		    	<a class="inalnav active_nav">保健食品</a>
+		        <a class="inalnav">凝芝护肤</a>
+		        <a class="inalnav">皙帝护肤</a>
+		        <a class="inalnav">菇类珍品</a>
+    		</div>
+    		<div class="lal_ad">
+	    		<div class="al_ad">
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/21.png"/><p class="inal_ad_p1">安惠力持</p><p class="inal_ad_p2">&yen;346</p><p class="inal_ad_p3">通粉优惠：&yen;300+46pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/22.png"/><p class="inal_ad_p1">安惠和胃（菇芪灵）</p><p class="inal_ad_p2">&yen;298</p><p class="inal_ad_p3">通粉优惠：&yen;270+28pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/23.png"/><p class="inal_ad_p1">安惠净心清闲</p><p class="inal_ad_p2">&yen;318</p><p class="inal_ad_p3">通粉优惠：&yen;280+38pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/24.png"/><p class="inal_ad_p1">安惠夕阳红</p><p class="inal_ad_p2">&yen;289</p><p class="inal_ad_p3">通粉优惠：&yen;270+19pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/25.png"/><p class="inal_ad_p1">安惠百菌健</p><p class="inal_ad_p2">&yen;296</p><p class="inal_ad_p3">通粉优惠：&yen;270+26pv;</p></a>
+	        	</div>
+	        	<div class="al_ad">
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/22.png"/><p class="inal_ad_p1">安惠力持</p><p class="inal_ad_p2">&yen;346</p><p class="inal_ad_p3">通粉优惠：&yen;300+46pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/22.png"/><p class="inal_ad_p1">安惠和胃（菇芪灵）</p><p class="inal_ad_p2">&yen;298</p><p class="inal_ad_p3">通粉优惠：&yen;270+28pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/23.png"/><p class="inal_ad_p1">安惠净心清闲</p><p class="inal_ad_p2">&yen;318</p><p class="inal_ad_p3">通粉优惠：&yen;280+38pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/24.png"/><p class="inal_ad_p1">安惠夕阳红</p><p class="inal_ad_p2">&yen;289</p><p class="inal_ad_p3">通粉优惠：&yen;270+19pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/25.png"/><p class="inal_ad_p1">安惠百菌健</p><p class="inal_ad_p2">&yen;296</p><p class="inal_ad_p3">通粉优惠：&yen;270+26pv;</p></a>
+	        	</div>
+	        	<div class="al_ad">
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/23.png"/><p class="inal_ad_p1">安惠力持</p><p class="inal_ad_p2">&yen;346</p><p class="inal_ad_p3">通粉优惠：&yen;300+46pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/22.png"/><p class="inal_ad_p1">安惠和胃（菇芪灵）</p><p class="inal_ad_p2">&yen;298</p><p class="inal_ad_p3">通粉优惠：&yen;270+28pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/23.png"/><p class="inal_ad_p1">安惠净心清闲</p><p class="inal_ad_p2">&yen;318</p><p class="inal_ad_p3">通粉优惠：&yen;280+38pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/24.png"/><p class="inal_ad_p1">安惠夕阳红</p><p class="inal_ad_p2">&yen;289</p><p class="inal_ad_p3">通粉优惠：&yen;270+19pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/25.png"/><p class="inal_ad_p1">安惠百菌健</p><p class="inal_ad_p2">&yen;296</p><p class="inal_ad_p3">通粉优惠：&yen;270+26pv;</p></a>
+	        	</div>
+	        	<div class="al_ad">
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/25.png"/><p class="inal_ad_p1">安惠力持</p><p class="inal_ad_p2">&yen;346</p><p class="inal_ad_p3">通粉优惠：&yen;300+46pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/22.png"/><p class="inal_ad_p1">安惠和胃（菇芪灵）</p><p class="inal_ad_p2">&yen;298</p><p class="inal_ad_p3">通粉优惠：&yen;270+28pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/23.png"/><p class="inal_ad_p1">安惠净心清闲</p><p class="inal_ad_p2">&yen;318</p><p class="inal_ad_p3">通粉优惠：&yen;280+38pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/24.png"/><p class="inal_ad_p1">安惠夕阳红</p><p class="inal_ad_p2">&yen;289</p><p class="inal_ad_p3">通粉优惠：&yen;270+19pv;</p></a>
+		            <hr/>
+		            <a class="inal_ad" href="#"><img class="inal_ad_pic" src="../Img/ah/25.png"/><p class="inal_ad_p1">安惠百菌健</p><p class="inal_ad_p2">&yen;296</p><p class="inal_ad_p3">通粉优惠：&yen;270+26pv;</p></a>
+	        	</div>
+        	</div>
+    
+		    <div class="gszj">
+		    	<img class="gszj_l" src="../Img/logo/logo-ah.png"/>
+		        <div class="gszj_m"></div>
+		        <div class="gszj_r">企业证照</div>
+		        <div class="gszj_b">Copyright copy安惠（中国）日用品有限公司未经许可不得转载或链接</div>
+		    </div>
+		    
+		</div>
+</block>

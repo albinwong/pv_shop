@@ -1,14 +1,13 @@
 <extend name="layout/home" />
-<block name="title"><title>{$keyname}-商品搜索-汇盟通宝科技</title></block>
+<block name="title"><title><if condition="!empty($keyname)">{$keyname}<else />所有商品</if>-商品搜索-汇盟通宝科技</title></block>
 <block name="content">
 	<div class="kong"></div>
+	<if condition="!empty($res)">
 	<foreach name="res" item="vo">
-		 <a class="inal_ad" href="__URL__/detail?id={$vo.id}"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/><p class="inal_ad_p1">安惠维舒饮固体饮料</p><p class="inal_ad_p2">&yen;{$vo.price}</p><p class="inal_ad_p3">通粉优惠：&yen;300+98pv;</p></a>
-    <hr/>
-    </foreach>
-	<foreach name="res" item="vo">
-		 <a class="inal_ad" href="#"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/><p class="inal_ad_p1">安惠维舒饮固体饮料</p><p class="inal_ad_p2">&yen;{$vo.price}</p><p class="inal_ad_p3">通粉优惠：&yen;300+98pv;</p></a>
+		 <a class="inal_ad" href="__URL__/detail?id={$vo.id}"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/><p class="inal_ad_p1">{$vo.gname}({$vo.size})</p><p class="inal_ad_p2">&yen;{$vo.price}</p><p class="inal_ad_p3">通粉优惠：&yen;{$vo.fprice}+{$vo.pv}PV</p></a>
     <hr/>
     </foreach>
     <div class="kong"></div>
+    <else /><div style="font-size:22px;padding:20px;"><center>暂无商品</center></div>
+    </if>
 </block>

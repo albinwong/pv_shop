@@ -29,9 +29,11 @@
 							<label for="selector1" class="col-sm-2 control-label">权限</label>
 							<div class="col-sm-8">
 								<select name="role" id="selector1" class="form-control1">
-									<option value="0">未激活</option>
-									<option value="1">管理员</option>
-									<option value="2">普通会员</option>
+									<option value="1">普通员工</option>
+									<option value="2" <if condition="$_SESSION['adminuser']['role'] gt 3">disabled</if>>主管</option>
+									<!-- <option value="3" <if condition="$_SESSION['adminuser']['role'] gt 4">disabled</if>>经理</option>
+									<option value="4" <if condition="$_SESSION['adminuser']['role'] gt 5">disabled</if>>管理员</option> -->
+									<option value="5" <if condition="$_SESSION['adminuser']['role'] lt 5">disabled</if>>超级管理员</option>
 								</select>
 							</div>
 						</div>

@@ -43,7 +43,6 @@ class GoodsController extends CommonController {
 	 		$upload->autoSub = false;//拒绝子目录创建
 	 		// 上传文件
 	 		$info = $upload->upload();
-	 		// dump($info);exit;
 	 		if($info){
 	 			//上传成功
 	 			$data['pic'] = $info['pic']['savename'];
@@ -133,7 +132,7 @@ class GoodsController extends CommonController {
 	 		}
 	 		// dump($data);exit;
 			$res = $Goods->save($data); 
-			echo $Goods->_SQL();
+			// echo $Goods->_SQL();
 			// dump($res);exit;
 			if($res){
 	 			//成功跳转

@@ -26,18 +26,19 @@
         }
     </style>
    <!--  /*["id"] => string(1) "1"
-  ["username"] => string(10) "adminadmin"
-  ["password"] => string(32) "e10adc3949ba59abbe56e057f20f883e"
-  ["email"] => string(16) "albinwong@qq.com"
-  ["pic"] => string(17) "586f53aec7c4c.png"
-  ["address"] => string(7) "shaanxi"
-  ["phone"] => string(11) "17865681111"
-  ["regtime"] => string(10) "1479672142"
-  ["role"] => string(1) "5"
-  ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/ -->
+          ["username"] => string(10) "adminadmin"
+          ["password"] => string(32) "e10adc3949ba59abbe56e057f20f883e"
+          ["email"] => string(16) "albinwong@qq.com"
+          ["pic"] => string(17) "586f53aec7c4c.png"
+          ["address"] => string(7) "shaanxi"
+          ["phone"] => string(11) "17865681111"
+          ["regtime"] => string(10) "1479672142"
+          ["role"] => string(1) "5"
+          ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/ -->
     <div class="banner_wd">
     	<img class="baner_pic_wd" src="/work/pv_shop/Public/home/img/Wode/baner_02.jpg"/>
-        <img class="baner_pic_wdtx" src="/work/pv_shop/Public/Uploads/user/<?php echo ($user['pic']); ?>"/>
+      <?php if(!empty($user['pic'])): ?><img class="baner_pic_wdtx" src="/work/pv_shop/Public/Uploads/user/<?php echo ($user['pic']); ?>"/>
+        <?php else: ?><img class="baner_pic_wdtx" src="/work/pv_shop/Public/Uploads/user/588803348a17a.png"/><?php endif; ?>
         <p class="banner_wd_name">汇盟通宝：<?php echo ($user["phone"]); ?></p>
     </div>
     

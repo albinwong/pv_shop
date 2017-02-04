@@ -31,7 +31,7 @@
             	<li>
                 	<ul class="gwc_sp">
                     	<li>
-                        	<input value="{$key}" name="dx" class="gwc_ft_an2" type="checkbox"/>
+                        	<input value="{$key}" name="dx[]" class="gwc_ft_an2" type="checkbox"/>
                         	<img class="gwc_pic_cp" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/>
                             <div class="gwc_cp_xs">
                                 <p class="gwc_p3">{$vo.gname}({$vo.size})</p>
@@ -62,7 +62,8 @@
             </div>
         </if>
     </ul>
-
+    
+    <if condition="!empty($_SESSION['pv_cart'])">
     <div class="gwc_ft">
         <form><input name="all" class="gwc_ft_an" type="checkbox" /></form>
         <p class="gwc_p7">全选</p>
@@ -70,11 +71,11 @@
         <p class="gwc_p9">&yen;0</p>
         <button>结算&nbsp;(0)</button>
     </div>
+    </if>
         </form>
     <script type="text/javascript">
     $(function(){
         var l = $("input[name=dx]").length;
-        // var arr =[];
         // (取消)全选
         $('input[name=all]').click(function(){
             var flag = $(this).attr('checked');

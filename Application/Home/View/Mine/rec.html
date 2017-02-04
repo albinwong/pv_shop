@@ -1,0 +1,69 @@
+<extend name="layout/home" />
+<block name="title"><title>待收货</title></block>
+<block name="header">
+    <div class="header">
+        <a class="fanhui" onClick="javascript:window.history.back()">
+            <img class="hd_ltb" src="__PUBLIC__/home/img/tb-1.png"/>
+            <p class="hd_fh">返回</p>
+        </a>
+        <p class="hd_cpxq">我的</p>
+        <img class="hd_r" src="__PUBLIC__/home/img/tb-3.png"/>
+    </div>
+</block>
+<block name="content">
+    <div class="wd_nav">
+        <a class="wd_nav_a" href="__URL__/allOrder">全部订单</a>
+        <a class="wd_nav_a" href="__URL__/waitPay">待付款</a>
+        <a class="wd_nav_a" href="__URL__/send">待发货</a>
+        <a class="wd_nav_a wd_nav_active" href="__URL__/rec">待收货</a>
+    </div>
+    <ul class="wd_pp">
+        <if condition="!empty($order)">
+        <foreach name="order" item="all">
+            <li>
+                <foreach name="all[goods]" item="goods">
+                	<ul class="gwc_sp">
+                    	<li>
+                            <img class="gwc_pic_cp" src="__PUBLIC__/Uploads/goods/{$goods.pic}"/>
+                            <div class="gwc_cp_xs">
+                                <p class="gwc_p3">{$goods.gname}({$goods.size})</p>
+                                <p class="gwc_p4">&yen;{$goods['buyprice']+$goods['buypv']}</p>
+                                <p class="gwc_p5">&times;{$goods.buycnt}</p>
+                                <p class="gwc_p6">通粉优惠：&yen;{$goods.buyprice}+{$goods.buypv}PV</p>
+                            </div> 
+                        </li>
+                    </ul>
+                </foreach>
+                <div class="wd_cp_gj">
+                    <p class="wd_cp_gjp1">共{$all.zj}件商品</p>
+                    <p class="wd_cp_gjp2">合计：&yen;{$all.ormb}+{$all.opv}PV（含运费：&yen;0.00）</p>
+                    <a class="wd_cp_fk" id="shkey" oid="{$all.oid}">确认收货</a>
+                    <a class="wd_cp_fk wd_cp_fk01" href="__URL__/trade">查看物流</a>
+                    <a class="wd_cp_fk wd_cp_fk01" href="#">延长收货</a>
+                </div>
+            </li>
+            <div class="kong"></div>
+        </foreach>
+        <else /><div class="wd_cp_gj">没有收货的订单哦~</div>
+        </if>
+    </ul>
+    <script type="text/javascript">
+    $('#shkey').click(function(){
+        if(confirm('确认收货')){
+            var oid = $(this).attr('oid');
+            $.ajax({
+            url:'orderStatus',
+            data:{'oid':oid},
+            dataType:'',
+            type:'POST',
+            success:function(mes){
+                if(mes){
+                    alert('交易完成!');
+                    location.reload();
+                }
+            }
+            });
+        }
+    });
+    </script>
+</block>

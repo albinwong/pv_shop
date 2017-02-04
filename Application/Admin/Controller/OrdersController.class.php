@@ -43,44 +43,5 @@ class OrdersController extends CommonController {
     	$this->assign('res1',$res1);
     	$this->display();
     }
-
-
- 	public function getName($url){
-		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-		$res = curl_exec($ch);
-		curl_close($ch);
-		return $res;
-	}
-
-	public function kuaidi($code){
-		//运单编号
-		// $code = '1601008884822';
-		//获取公司的编号
-		$url = 'http://www.kuaidi100.com/autonumber/autoComNum?text='.$code;
-
-		//发送请求
-		$res = $this->getName($url);
-
-		$data = json_decode($res, true);
-
-		$com = $data['auto'][0]['comCode'];
-
-		//通过运单号 和 公司名称请求数据
-		$url = 'http://www.kuaidi100.com/query?type='.$com.'&postid='.$code.'&id=1&valicode=&temp=0.9467048459143914';
-		$res = $this->getName($url);
-		$a = json_decode($res,TRUE);
-		// dump($a['message']);exit;
-		if($a['message']=='ok'){
-			echo "<pre>";
-			var_dump($a['data']);
-			foreach ($a['data'] as $k => $v) {
-				dump($v['time']);
-			}
-		}else{
-			echo '单号不存在';
-		}
-	}
     
 }

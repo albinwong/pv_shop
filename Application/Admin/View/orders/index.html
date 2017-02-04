@@ -23,7 +23,7 @@
 			            <td scope="row">{$vo['oid']}</td>
 			            <td>{$vo['rec']}</td>
 			            <td>{$vo['tel']}</td>
-			            <td>{:date('Y年m月d日 h:i:s',$vo['otime'])}</td>
+			            <td>{:date('Y年m月d日 H:i:s',$vo['otime'])}</td>
 			            <td>{$vo['status']|getOrderStatus}</td>
 			            <td>
 							<a href="{:U('admin/orders/detail',array('id'=>$vo['oid']))}">订单详情</a>

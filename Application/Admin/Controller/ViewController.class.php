@@ -14,7 +14,7 @@ class ViewController extends CommonController {
 	}
 
 	/**
-	 * 用户添加验证
+	 * 轮播添加验证
 	 */
 	public function insert(){
 		$Views = M("view"); 
@@ -39,7 +39,7 @@ class ViewController extends CommonController {
 	}
 
 	/**
-	 * 用户列表页面
+	 * 轮播列表页面
 	 */
     public function index(){
 		$Views = M("view"); 
