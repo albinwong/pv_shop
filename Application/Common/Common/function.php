@@ -59,6 +59,15 @@
 		return $res['areaname'];
 	}
 	
+	function getUserAuth($id){
+		switch ($id) {
+			case '1':return '普通员工';break;
+			case '2':return '主管';break;
+			case '3':return '经理';break;
+			case '4':return '管理员';break;
+			default:return '超级管理员';break;
+		}
+	}
 
 
  ?>
