@@ -1,0 +1,29 @@
+[ 2017-02-08T13:42:36+08:00 ] ::1 /work/pv_shop/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009205s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.014071s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.014160s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\xampp\htdocs\work\pv_shop\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php 第 52 行.
+SQL: SHOW COLUMNS FROM `cates` [ RunTime:0.027931s ]
+SQL: SELECT * FROM `cates` WHERE ( pid=0 )  [ RunTime:0.030592s ]
+SQL: SHOW COLUMNS FROM `view` [ RunTime:0.074639s ]
+SQL: SELECT * FROM `view`  [ RunTime:0.003174s ]
+SQL: SHOW COLUMNS FROM `recommend` [ RunTime:0.047071s ]
+SQL: SELECT * FROM `recommend` WHERE ( cate_id = 1 and  status = 1 ) ORDER BY id desc LIMIT 2   [ RunTime:0.002182s ]
+SQL: SELECT * FROM `recommend` WHERE ( cate_id = 3 and  status = 1 ) ORDER BY id desc LIMIT 2   [ RunTime:0.002116s ]
+SQL: SELECT * FROM `recommend` WHERE ( cate_id = 4 and  status = 1 ) ORDER BY id desc LIMIT 2   [ RunTime:0.002588s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000110s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000175s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.108689s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.108769s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.012605s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012666s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.011131s ]
+INFO: [ app_end ] --END-- [ RunTime:0.011206s ]
+

@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <title>直销商城-汇盟通宝科技</title>
-<meta name="viewport" content="width=divice-width minimum-scale=1.0 maximum-scale=1.0 user-scalable=no"/>
+<meta name="viewport" content="width=divice-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <link href="/work/pv_shop/Public/home/css/Throughsetting.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/index.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/weui.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/order.css" type="text/css" rel="stylesheet" />
 <link href="/work/pv_shop/Public/home/css/common.css" type="text/css" rel="stylesheet" />
-<script src="/work/pv_shop/Public/home/js/order.js" type="text/javascript"></script>
 <link href="/work/pv_shop/Public/home/css/swiper-3.4.1.min.css" rel="stylesheet" />
 <script src="/work/pv_shop/Public/home/js/jquery-1.8.3.min.js" language="javascript"></script>
 <script src="/work/pv_shop/Public/home/js/swiper-3.4.1.min.js"></script>
 <script src="/work/pv_shop/Public/home/js/js.js"></script>
+<script src="/work/pv_shop/Public/home/js/order.js" type="text/javascript"></script>
 </head>
 <body>
 	

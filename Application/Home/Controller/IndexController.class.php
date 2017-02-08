@@ -27,7 +27,7 @@ class IndexController extends Controller {
      * 搜索页
      */
     public function search(){
-        dump($_POST['keyword']);exit;
+        // dump($_POST['keyword']);exit;
         // echo I('post.keyword');
     	$goods = M('goods');
         if(empty($_POST['keyword'])){
