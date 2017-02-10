@@ -32,9 +32,15 @@
     <div class="indztj">
     	<form action="__MODULE__/address/addAddress" method="post">
             <p>所在地区
-                <select name="prov" id="prov"></select>
-                <select name="city" id="city"></select>
-                <select name="xian" id="xian"></select>
+                <select name="prov" id="prov">
+                    <option>---请选择---</option>
+                </select>
+                <select name="city" id="city">
+                    <option>---请选择---</option>
+                </select>
+                <select name="xian" id="xian">
+                    <option>---请选择---</option>
+                </select>
             </p>
         	<p>请输入地址<input class="dz" disabled type="text" name="detail"/></p>
             <p>电话<input class="dh" type="text" name="number"/></p>
@@ -145,10 +151,11 @@
             var pid = $(this).val();
             // 通过省的id去获取市的内容
             $.get("__MODULE__/address/address",{'pid':pid},function(data){
-                $('#city').empty();
+                $('#city').empty().html('<option>---请选择---</option>');
+                $('#xian').empty().html('<option>---请选择---</option>');
                 // 遍历数据进行添加
                 for(var i=0;i<data.length;i++){
-                    var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
+                   var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
                     $('#city').append(op);
                 }
             },'json');
@@ -159,7 +166,7 @@
             var pid = $(this).val();
             // 通过省的id去获取市的内容
             $.get("__MODULE__/address/address",{'pid':pid},function(data){
-                $('#xian').empty();
+                $('#xian').empty().html('<option>---请选择---</option>');
                 // 遍历数据进行添加
                 for(var i=0;i<data.length;i++){
                     var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');

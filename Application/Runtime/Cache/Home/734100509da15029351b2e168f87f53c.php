@@ -3,22 +3,35 @@
 <head>
 <meta charset="utf-8">
 <title>订单确认页</title>
-<link href="/work/pv_shop/Public/home/css/style.css" rel="stylesheet">
-<link href="/work/pv_shop/Public/home/css/swiper-3.4.1.min.css" rel="stylesheet">
+<meta name="viewport" content="width=divice-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<link href="/work/pv_shop/Public/home/css/Throughsetting.css" type="text/css" rel="stylesheet"/>
+<link href="/work/pv_shop/Public/home/css/index.css" type="text/css" rel="stylesheet"/>
+<link href="/work/pv_shop/Public/home/css/weui.css" type="text/css" rel="stylesheet"/>
+<link href="/work/pv_shop/Public/home/css/order.css" type="text/css" rel="stylesheet" />
+<link href="/work/pv_shop/Public/home/css/common.css" type="text/css" rel="stylesheet" />
+<link href="/work/pv_shop/Public/home/css/swiper-3.4.1.min.css" rel="stylesheet" />
 <script src="/work/pv_shop/Public/home/js/jquery-1.8.3.min.js" language="javascript"></script>
 <script src="/work/pv_shop/Public/home/js/swiper-3.4.1.min.js"></script>
 <script src="/work/pv_shop/Public/home/js/js.js"></script>
+<script src="/work/pv_shop/Public/home/js/order.js" type="text/javascript"></script>
 </head>
 <body>
+	
+		<header class="weui_cell" style="background: #829a2e; position: fixed; top:0px; width: 98%; z-index: 3;">
+	        <div class="weui_cell_hd" onclick="javascript:window.history.back()" >
+	            <img src="/work/pv_shop/Public/home/img/tb-1.png" alt=""/>
+	        </div>
+	        <div class="weui_cell_bd weui_cell_primary" style="background: #ffffff; border-radius: 8px; text-align: center;">
+	            <form class="hd_m" action="/work/pv_shop/index.php/Home/Index/search" method="post">
+	                <input type="text" name="keyword" placeholder="请输入您要搜索的信息" />
+                    <input type="submit" style="display:none;" />
+	            </form>
+	        </div>
+	        <div class="pull-right person-icon">
+	            <img src="/work/pv_shop/Public/home/img/tb-3.png" alt="" />
+	        </div>
+	    </header>
     
-        <div class="header">
-            <a class="fanhui_tb" href="/work/pv_shop/index.php/Home/Index/index"><img class="hd_l" src="/work/pv_shop/Public/home/img/tb-1.png"/></a>
-                <form class="hd_m" action="/work/pv_shop/index.php/Home/Index/search" method="post">
-                    <input type="text" name="keyword" placeholder="请输入搜索内容">
-                    <input type="submit" style="display:none;">
-                </form>
-            <img class="hd_r" src="/work/pv_shop/Public/home/img/tb-3.png"/>
-        </div>
     
     
     <div class="dizhi">
@@ -50,9 +63,15 @@
     <div class="indztj">
     	<form action="/work/pv_shop/index.php/Home/address/addAddress" method="post">
             <p>所在地区
-                <select name="prov" id="prov"></select>
-                <select name="city" id="city"></select>
-                <select name="xian" id="xian"></select>
+                <select name="prov" id="prov">
+                    <option>---请选择---</option>
+                </select>
+                <select name="city" id="city">
+                    <option>---请选择---</option>
+                </select>
+                <select name="xian" id="xian">
+                    <option>---请选择---</option>
+                </select>
             </p>
         	<p>请输入地址<input class="dz" disabled type="text" name="detail"/></p>
             <p>电话<input class="dh" type="text" name="number"/></p>
@@ -161,10 +180,11 @@
             var pid = $(this).val();
             // 通过省的id去获取市的内容
             $.get("/work/pv_shop/index.php/Home/address/address",{'pid':pid},function(data){
-                $('#city').empty();
+                $('#city').empty().html('<option>---请选择---</option>');
+                // var op = $('<option>qingxuanz </option>');
                 // 遍历数据进行添加
                 for(var i=0;i<data.length;i++){
-                    var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
+                   var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
                     $('#city').append(op);
                 }
             },'json');
@@ -175,7 +195,7 @@
             var pid = $(this).val();
             // 通过省的id去获取市的内容
             $.get("/work/pv_shop/index.php/Home/address/address",{'pid':pid},function(data){
-                $('#xian').empty();
+                $('#xian').empty().html('<option>---请选择---</option>');
                 // 遍历数据进行添加
                 for(var i=0;i<data.length;i++){
                     var op = $('<option value="'+data[i].areaid+'">'+data[i].areaname+'</option>');
@@ -188,12 +208,34 @@
 
 
     
-        <div class="footer">
-            <a class="ft_a" href="/work/pv_shop/index.php/Home/index/index"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-8.png"/><p class="ft_z">首页</p></a>
-            <a class="ft_a" href="/work/pv_shop/index.php/Home/index/more"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-7.png"/><p class="ft_z">购物</p></a>
-            <a class="ft_a" href="/work/pv_shop/index.php/Home/index/cart"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-6.png"/><p>购物车</p></a>
-            <a class="ft_a" href="/work/pv_shop/index.php/Home/mine/info"><img class="ft_1" src="/work/pv_shop/Public/home/img/tb-5.png"/><p class="ft_z">我的</p></a>
-        </div>
+    
+        <div class="weui_tabbar" style="background: #829a2e; position: fixed; bottom: 0px; z-index: 3;">
+            <a href="/work/pv_shop/index.php/Home/Index/index" class="weui_tabbar_item weui_bar_item_on">
+                <div class="weui_tabbar_icon">
+                    <img src="/work/pv_shop/Public/home/img/tb-8.png" alt=""/>
+                </div>
+                <p class="weui_tabbar_label" style="color: #ffffff;">首页</p>
+            </a>
+            <a href="/work/pv_shop/index.php/Home/Index/more" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="/work/pv_shop/Public/home/img/tb-7.png" alt=""/>
+                </div>
+                <p class="weui_tabbar_label" style="color: #ffffff;">购物</p>
+            </a>
+            <a href="/work/pv_shop/index.php/Home/Index/cart" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="/work/pv_shop/Public/home/img/tb-6.png" alt=""/>
+                </div>
+                <p class="weui_tabbar_label" style="color: #ffffff;">购物车</p>
+            </a>
+            <a href="/work/pv_shop/index.php/Home/Mine/info" class="weui_tabbar_item">
+                <div class="weui_tabbar_icon">
+                    <img src="/work/pv_shop/Public/home/img/tb-5.png" alt=""/>
+                </div>
+                <p class="weui_tabbar_label" style="color: #ffffff;">我的</p>
+            </a>
+    	</div>
+    
     
 </body>
 <script type="text/javascript">
@@ -202,7 +244,6 @@ $(function(){
         window.history.go(-1);
         return false;
     });
-
 });
 </script>
 </html>
