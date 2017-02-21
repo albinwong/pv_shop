@@ -1,10 +1,12 @@
 <extend name="layout/home" />
 <block name="title"><title>我的</title></block>
 <block name="header">
-	<div class="header">
-    	<p class="hd_gwc">我的</p>
-        <img class="hd_r" src="__PUBLIC__/home/img/tb-3.png"/>
-    </div>
+	<header class="weui_cell_hd" style="background: #829a2e; text-align:center; color:#FFF; z-index:2;">
+	    	我的
+            <div class="pull-right" style="position:fixed; top:0px; font-size:1.1rem; right:3%;">
+	            <img style="margin-top:12px;" src="__PUBLIC__/home/img/tb-3.png" alt="" />
+	        </div>
+	</header>
 </block>
 <block name="content">
     <style type="text/css">
@@ -25,6 +27,8 @@
           ["regtime"] => string(10) "1479672142"
           ["role"] => string(1) "5"
           ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/ -->
+<div class="weui_cell_hd" style="margin-top:50px; margin-bottom:100px;">
+          
     <div class="banner_wd">
     	<img class="baner_pic_wd" src="__PUBLIC__/home/img/Wode/baner_02.jpg"/>
       <if condition="!empty($user['pic'])"><img class="baner_pic_wdtx" src="__PUBLIC__/Uploads/user/{$user['pic']}"/>
@@ -35,13 +39,30 @@
     
     <div class="wd_wddd">我的订单<p class="inwd_wddd"><a href="__URL__/allOrder">查看全部订单</a>&gt;</p></div>
     
-    <div class="wd_dfh">
-    	<a class="wd_dfh_a" href="__URL__/waitPay"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/waitpay.png"/><p class="wd_dfh_ap_info">待付款</p></a>
-        <a class="wd_dfh_a" href="__URL__/send"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/send.png"/><p class="wd_dfh_ap_info">待发货</p></a>
-        <a class="wd_dfh_a" href="__URL__/rec"><img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/rec.png"/><p class="wd_dfh_ap_info">待收货</p></a>
+    <div class="weui_navbar" style="position:relative; margin-top:10px;">
+    	<a class="weui_navbar_item" href="__URL__/waitPay">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/waitpay.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待付款</p>
+        </a>
+        <a class="weui_navbar_item" href="__URL__/send">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/send.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待发货</p>
+        </a>
+        <a class="weui_navbar_item" href="__URL__/rec">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="__PUBLIC__/home/img/Wode/rec.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待收货</p>
+        </a>
     </div>
     
     <div class="wd_jf">我的积分<p class="wd_jf_pic">1000</p></div>
     <div class="kong"></div>
+    
+</div>
 
 </block>

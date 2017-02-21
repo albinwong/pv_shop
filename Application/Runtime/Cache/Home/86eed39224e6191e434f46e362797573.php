@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title><?php echo ($zx["name"]); ?>系列</title>
-<meta name="viewport" content="width=divice-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
 <link href="/work/pv_shop/Public/home/css/Throughsetting.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/index.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/weui.css" type="text/css" rel="stylesheet"/>
@@ -18,9 +18,11 @@
 <body>
 	
 		<header class="weui_cell" style="background: #829a2e; position: fixed; top:0px; width: 98%; z-index: 3;">
-	        <div class="weui_cell_hd" onclick="javascript:window.history.back()" >
-	            <img src="/work/pv_shop/Public/home/img/tb-1.png" alt=""/>
-	        </div>
+	        
+                <div class="weui_cell_hd" onclick="javascript:window.history.back()" >
+    	            <img src="/work/pv_shop/Public/home/img/tb-1.png" alt=""/>
+    	        </div> 
+            
 	        <div class="weui_cell_bd weui_cell_primary" style="background: #ffffff; border-radius: 8px; text-align: center;">
 	            <form class="hd_m" action="/work/pv_shop/index.php/Home/Index/search" method="post">
 	                <input type="text" name="keyword" placeholder="请输入您要搜索的信息" />
@@ -49,7 +51,7 @@
     	<img class="gszj_l" src="/work/pv_shop/Public/Uploads/cate/<?php echo ($zx["logo"]); ?>" />
         <div class="gszj_m"></div>
         <div class="gszj_r">企业证照</div>
-        <div class="gszj_b"><?php echo ($zx["name"]); ?>（中国）日用品有限公司未经许可不得转载或链接</div>
+        <div class="gszj_b">汇盟通宝直销商城事业部</div>
     </div>
     <script type="text/javascript">
 $(function(){
@@ -66,7 +68,7 @@ $(function(){
                 if(mes!=1){
                    var res = eval(mes);
                    for(var i = 0;i<res.length;i++){
-                        var div = $('<a class="inal_ad" href="/work/pv_shop/index.php/Home/Index/detail?id='+res[i]['id']+'"><img class="inal_ad_pic" src="/work/pv_shop/Public/Uploads/goods/'+res[i]['pic']+'"/><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
+                        var div = $('<a class="inal_ad" href="/work/pv_shop/index.php/Home/Index/detail?id='+res[i]['id']+'"><p class="inal_ad_pic"><img src="/work/pv_shop/Public/Uploads/goods/'+res[i]['pic']+'"/></p><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
                         $('#goods').prepend(div);
                    }
                }else{
@@ -122,7 +124,7 @@ $(function(){
                 <div class="weui_tabbar_icon">
                     <img src="/work/pv_shop/Public/home/img/tb-7.png" alt=""/>
                 </div>
-                <p class="weui_tabbar_label" style="color: #ffffff;">购物</p>
+                <p class="weui_tabbar_label" style="color: #ffffff;">品牌</p>
             </a>
             <a href="/work/pv_shop/index.php/Home/Index/cart" class="weui_tabbar_item">
                 <div class="weui_tabbar_icon">

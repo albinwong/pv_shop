@@ -11,7 +11,7 @@ class IndexController extends Controller {
         // echo "<pre>";
         // dump($_SESSION['adminuser']);exit;
     	$cate = M('cates');
-    	$res = $cate->where('pid=0')->select();
+    	$res = $cate->limit(3)->where('pid=0')->select();
     	$view = M('view');
     	$lunbo = $view->select();
         $rec = M('recommend');

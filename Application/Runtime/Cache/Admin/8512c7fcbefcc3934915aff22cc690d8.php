@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">直销商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -130,7 +130,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             
 <style type="text/css">
 	#order-info{border:1px solid red;}
-	#order-info .label{border:;}
 </style>
 	<div class="col-md-12 graphs">
 	    <div class="xs">
@@ -138,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="bs-example4" data-example-id="simple-responsive-table">
 			<div class="bg-primary" style="padding:7px 20px 29px;">
 	            <div class="pull-left">订单号: <?php echo ($res1["oid"]); ?></div>
-	       		<div class="pull-right col-xs-offset-1">下单时间: <?php echo date('Y年m月d日 h:i:s',$res1['otime']);?> 
+	       		<div class="pull-right col-xs-offset-1">下单时间: <?php echo date('Y年m月d日 H:i:s',$res1['otime']);?> 
 	       		</div>
 	        </div>
 			<div class="goods-total" style="border:solid 1px #ddd;">

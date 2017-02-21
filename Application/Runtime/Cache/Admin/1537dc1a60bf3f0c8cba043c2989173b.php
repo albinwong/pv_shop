@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">积分商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -147,7 +147,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			        <tbody>
 			        <?php if(is_array($res)): foreach($res as $key=>$vo): ?><tr>
 			            <th scope="row"><?php echo ($vo['id']); ?></th>
-			            <td><img src="/work/pv_shop/Public/Uploads/cate/<?php echo ($vo['logo']); ?>" style="width:110%;" alt=""></td>
+			            <td>
+			            	<?php if(!empty($vo['logo'])): ?><img src="/work/pv_shop/Public/Uploads/cate/<?php echo ($vo['logo']); ?>" style="width:110%;" alt=""><?php endif; ?>
+			            </td>
 			            <td><?php echo ($vo['name']); ?></td>
 			            <td><?php echo (getcatename($vo['pid'])); ?></td>
 			            <td>

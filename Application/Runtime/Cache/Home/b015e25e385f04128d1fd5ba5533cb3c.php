@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>我的</title>
-<meta name="viewport" content="width=divice-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
 <link href="/work/pv_shop/Public/home/css/Throughsetting.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/index.css" type="text/css" rel="stylesheet"/>
 <link href="/work/pv_shop/Public/home/css/weui.css" type="text/css" rel="stylesheet"/>
@@ -17,10 +17,12 @@
 </head>
 <body>
 	
-	<div class="header">
-    	<p class="hd_gwc">我的</p>
-        <img class="hd_r" src="/work/pv_shop/Public/home/img/tb-3.png"/>
-    </div>
+	<header class="weui_cell_hd" style="background: #829a2e; text-align:center; color:#FFF; z-index:2;">
+	    	我的
+            <div class="pull-right" style="position:fixed; top:0px; font-size:1.1rem; right:3%;">
+	            <img style="margin-top:12px;" src="/work/pv_shop/Public/home/img/tb-3.png" alt="" />
+	        </div>
+	</header>
 
     
     
@@ -42,6 +44,8 @@
           ["regtime"] => string(10) "1479672142"
           ["role"] => string(1) "5"
           ["kd"] => string(16) "B9TcEupBU2jOyDtJ"*/ -->
+<div class="weui_cell_hd" style="margin-top:50px; margin-bottom:100px;">
+          
     <div class="banner_wd">
     	<img class="baner_pic_wd" src="/work/pv_shop/Public/home/img/Wode/baner_02.jpg"/>
       <?php if(!empty($user['pic'])): ?><img class="baner_pic_wdtx" src="/work/pv_shop/Public/Uploads/user/<?php echo ($user['pic']); ?>"/>
@@ -51,14 +55,31 @@
     
     <div class="wd_wddd">我的订单<p class="inwd_wddd"><a href="/work/pv_shop/index.php/Home/Mine/allOrder">查看全部订单</a>&gt;</p></div>
     
-    <div class="wd_dfh">
-    	<a class="wd_dfh_a" href="/work/pv_shop/index.php/Home/Mine/waitPay"><img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/waitpay.png"/><p class="wd_dfh_ap_info">待付款</p></a>
-        <a class="wd_dfh_a" href="/work/pv_shop/index.php/Home/Mine/send"><img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/send.png"/><p class="wd_dfh_ap_info">待发货</p></a>
-        <a class="wd_dfh_a" href="/work/pv_shop/index.php/Home/Mine/rec"><img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/rec.png"/><p class="wd_dfh_ap_info">待收货</p></a>
+    <div class="weui_navbar" style="position:relative; margin-top:10px;">
+    	<a class="weui_navbar_item" href="/work/pv_shop/index.php/Home/Mine/waitPay">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/waitpay.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待付款</p>
+        </a>
+        <a class="weui_navbar_item" href="/work/pv_shop/index.php/Home/Mine/send">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/send.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待发货</p>
+        </a>
+        <a class="weui_navbar_item" href="/work/pv_shop/index.php/Home/Mine/rec">
+            <p class="wd_dfh_apic">
+            	<img class="wd_dfh_apic" src="/work/pv_shop/Public/home/img/Wode/rec.png"/>
+            </p>
+            <p class="wd_dfh_ap_info">待收货</p>
+        </a>
     </div>
     
     <div class="wd_jf">我的积分<p class="wd_jf_pic">1000</p></div>
     <div class="kong"></div>
+    
+</div>
 
 
     
@@ -74,7 +95,7 @@
                 <div class="weui_tabbar_icon">
                     <img src="/work/pv_shop/Public/home/img/tb-7.png" alt=""/>
                 </div>
-                <p class="weui_tabbar_label" style="color: #ffffff;">购物</p>
+                <p class="weui_tabbar_label" style="color: #ffffff;">品牌</p>
             </a>
             <a href="/work/pv_shop/index.php/Home/Index/cart" class="weui_tabbar_item">
                 <div class="weui_tabbar_icon">

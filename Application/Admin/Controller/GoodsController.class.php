@@ -51,7 +51,7 @@ class GoodsController extends CommonController {
 			$res = $Goods->data($data)->add(); 
 			if($res){
 	 			//成功跳转
-	 			$this->success('添加成功',U('admin/goods/index'),5);
+	 			$this->success('添加成功',U('admin/goods/index'),1);
 			}else{
 	 			//失败跳转
 	 			$this->error('添加失败');
@@ -136,7 +136,7 @@ class GoodsController extends CommonController {
 			// dump($res);exit;
 			if($res){
 	 			//成功跳转
-	 			$this->success('修改成功',U('admin/goods/index'),5);
+	 			$this->success('修改成功',U('admin/goods/index'),1);
 			}else{
 	 			//失败跳转
 	 			$this->error('修改失败');
@@ -153,7 +153,7 @@ class GoodsController extends CommonController {
  		$res = $Goods->where($_GET)->delete();
  		if($res){
  			// 删除成功
- 			$this->success('删除成功',U('admin/goods/index'),5);
+ 			$this->success('删除成功',U('admin/goods/index'),1);
  		}else{
  			//修改失败
  			$this->error('删除失败');

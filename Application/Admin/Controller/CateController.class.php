@@ -47,16 +47,15 @@ class CateController extends CommonController {
 	 * 分类添加验证
 	 */
 	public function insert(){
-		// dump($_POST);exit;
 		//进行表单验证
 		$rules = array(
 			array('name','require','分类名称不能为空'),
-			array('name','','分类名称',0,'unique'),
+			array('name','','分类名称已存在',0,'unique'),
 		);
 		$Cate = M('cates');
 		if(!$Cate->validate($rules)->create()){
 			// 如果创建失败 表示验证没有通过 输出错误提示信息
-		     exit($User->getError());
+		     exit($Cate->getError());
 		 }else{
 		 	// 提取内容
 		 	$data = $_POST;
@@ -73,9 +72,10 @@ class CateController extends CommonController {
 	 		$upload->maxSize = 3145728;//设置附件上传大小
 	 		$upload->exts = array('jpg','gif','png','jpeg');//设置附件上传类型
 	 		$upload->rootPath = './Public/Uploads/cate/';//设置附件上传目录
+	 		$upload->saveName = date('YmdHis').rand(1000,9999); 
 	 		$upload->autoSub = false;//拒绝子目录创建
 	 		// 上传文件
-	 		$info = $upload->upload();
+	 		$info = $upload->Upload();
 	 		if($info){
 	 			//上传成功
 	 			$data['logo'] = $info['pic']['savename'];
@@ -83,7 +83,7 @@ class CateController extends CommonController {
 	        $res = $Cate->data($data)->add();
 	        //提醒
 	        if($res){
-	        	$this->success('添加成功',U('admin/cate/index'),5);
+	        	$this->success('添加成功',U('admin/cate/index'),1);
 	        }else{
 	        	$this->error('添加失败');
 	        }

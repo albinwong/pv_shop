@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">直销商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -155,8 +155,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            <td><?php echo ($vo['address']); ?></td>
 			            <td><?php echo ($vo['phone']); ?></td>
 			            <td><?php echo date('Y-m-d h:i:s',$vo['regtime']);?></td>
-			            <td><?php echo ($vo['auth']); ?></td>
-			            <td><img src="/work/pv_shop/Public/Uploads/user/<?php echo ($vo['pic']); ?>" style="width:50px;" alt=""></td>
+			            <td><?php echo (getuserauth($vo['role'])); ?></td>
+			            <td><?php if(!empty($vo['pic'])): ?><img src="/work/pv_shop/Public/Uploads/user/<?php echo ($vo['pic']); ?>" style="width:50px;" alt=""><?php else: ?><if condition="!empty($vo['pic'])"><img src="/work/pv_shop/Public/Uploads/user/588803348a17a.png" style="width:50px;" alt=""><?php endif; ?></td>
 			            <td>
 			            	<a href="<?php echo U('admin/user/delete',array('id'=>$vo['id']));?>">删除</a>||
 							<a href="<?php echo U('admin/user/edit',array('id'=>$vo['id']));?>">修改</a>

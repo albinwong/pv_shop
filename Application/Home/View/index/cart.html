@@ -1,32 +1,35 @@
 <extend name="layout/home" />
 <block name="title"><title>购物车</title></block>
+
 <block name="header">
 <style type="text/css">
 .jumbotron {
     background-color: #eee;
     color: inherit;
-    margin-top:130px;
-    margin-bottom: 30px;
-    padding: 30px 15px;
+    margin-top:60px;
+    margin-bottom: 10px;
 }
 .jumbotron p {
-    font-size: 21px;
+    font-size:1.0rem;
     font-weight: 200;
     margin-bottom: 15px;
-    margin-left:40%;
+	text-align:center;
 }
 </style>
-	<div class="header">
-    	<p class="hd_gwc">购物车</p>
-        <p class="hd_gwc_bj">编辑</p>
-        <img class="hd_r" src="__PUBLIC__/home/img/tb-3.png"/>
-    </div>
+		<header class="weui_cell_hd" style="background: #829a2e; text-align:center; color:#FFF; z-index:2;">
+	    	购物车
+            <div class="pull-right" style="position:fixed; top:0px; font-size:1.1rem; right:3%;">
+	            <span style="float:left;">编辑</span><img style="margin-top:12px;float:left;" src="__PUBLIC__/home/img/tb-3.png" alt="" />
+	        </div>
+	    </header>
+
 </block>
 <block name="content">
 
     <form action="__URL__/commit" method="post">
-    <ul class="gwc_pp">
-        <if condition="!empty($_SESSION['pv_cart'])">
+		<div class="weui_cell_hd" style="margin-top:50px; margin-bottom:100px;">
+        	<ul class="gwc_pp">
+            <if condition="!empty($_SESSION['pv_cart'])">
             <foreach name="cart" item="vo">
             	<li>
                 	<ul class="gwc_sp">
@@ -34,26 +37,26 @@
                         	<input value="{$key}" name="dx[]" class="gwc_ft_an2" type="checkbox"/>
                         	<img class="gwc_pic_cp" src="__PUBLIC__/Uploads/goods/{$vo.pic}"/>
                             <div class="gwc_cp_xs">
-                                <p class="gwc_p3">{$vo.gname}({$vo.size})</p>
-                                <p class="gwc_p4">&yen;{$vo.price}</p>
-                                <p class="gwc_p5">&times;{$vo.count}</p>
-                                <p class="gwc_p6">通粉优惠：&yen;{$vo.fprice}+{$vo.pv}PV</p>
+                                <p class="gwc_p3">安利多种植物蛋白粉(770克)</p>
+                                <p class="gwc_p4">&yen;560.00</p>
+                                <p class="gwc_p5">&times;1</p>
+                                <p class="gwc_p6">通粉优惠：&yen;400+160TBC</p>
                             </div>
                             <div class="gwc_cp_yc">
-                            	<div class="gwc_yc_l">
-                                	<div class="gwc_yc_lt">
-                                    	<div class="gwc_yc_ltl">&ndash;</div>
+                                <div class="gwc_yc_l">
+                                    <div class="gwc_yc_lt">
+                                        <div class="gwc_yc_ltl">&ndash;</div>
                                         <div class="gwc_yc_ltm">1</div>
                                         <div class="gwc_yc_ltl">+</div>
                                     </div>
-                                    <div class="gwc_yc_lb">{$vo.gname}({$vo.size})</div>
+                                    <div class="gwc_yc_lb">安利多种植物蛋白粉(770克)</div>
                                 </div>
                                 <div class="gwc_yc_r">删除</div>
                             </div>
                         </li>
                     </ul>
                 </li>
-            </foreach>
+                </foreach>
         <else />
             <div class="jumbotron">
               <p>您的购车暂无商品</p>
@@ -61,17 +64,17 @@
               <p style="float:right;padding-right:8%"><a href="__URL__/search">去购物</a></p>
             </div>
         </if>
-    </ul>
-    
-    <if condition="!empty($_SESSION['pv_cart'])">
+            </ul>
+            <if condition="!empty($_SESSION['pv_cart'])">
     <div class="gwc_ft">
-        <form><input name="all" class="gwc_ft_an" type="checkbox" /></form>
+        <input name="all" class="gwc_ft_an" type="checkbox" />
         <p class="gwc_p7">全选</p>
         <p class="gwc_p8">合计：</p>
         <p class="gwc_p9">&yen;0</p>
         <button>结算&nbsp;(0)</button>
     </div>
     </if>
+        </div>
         </form>
     <script type="text/javascript">
     $(function(){

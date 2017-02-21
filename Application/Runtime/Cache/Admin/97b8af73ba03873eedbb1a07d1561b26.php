@@ -8,22 +8,22 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="/work/pv_shop/Public/admin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="/Public/admin/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="/work/pv_shop/Public/admin/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/Public/admin/css/style.css" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="/work/pv_shop/Public/admin/css/lines.css" rel='stylesheet' type='text/css' />
-<link href="/work/pv_shop/Public/admin/css/font-awesome.css" rel="stylesheet"> 
+<link href="/Public/admin/css/lines.css" rel='stylesheet' type='text/css' />
+<link href="/Public/admin/css/font-awesome.css" rel="stylesheet"> 
 <!-- jQuery -->
-<script src="/work/pv_shop/Public/admin/js/jquery.min.js"></script>
+<script src="/Public/admin/js/jquery.min.js"></script>
 <!-- Nav CSS -->
-<link href="/work/pv_shop/Public/admin/css/custom.css" rel="stylesheet">
+<link href="/Public/admin/css/custom.css" rel="stylesheet">
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/work/pv_shop/Public/admin/js/metisMenu.min.js"></script>
-<script src="/work/pv_shop/Public/admin/js/custom.js"></script>
+<script src="/Public/admin/js/metisMenu.min.js"></script>
+<script src="/Public/admin/js/custom.js"></script>
 <!-- Graph JavaScript -->
-<script src="/work/pv_shop/Public/admin/js/d3.v3.js"></script>
-<script src="/work/pv_shop/Public/admin/js/rickshaw.js"></script>
+<script src="/Public/admin/js/d3.v3.js"></script>
+<script src="/Public/admin/js/rickshaw.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">积分商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            <th scope="row"><?php echo ($vo['id']); ?></th>
 			            <td><?php echo (getcatename($vo['cate_id'])); ?></td>
 			            <td><?php echo ($vo['intro']); ?></td>
-			            <td><img src="/work/pv_shop/Public/Uploads/recommend/<?php echo ($vo['pic']); ?>" style="width:50px;height:50px;" alt=""></td>
+			            <td><img src="/Public/Uploads/recommend/<?php echo ($vo['pic']); ?>" style="width:50px;height:50px;" alt=""></td>
 			            <td><?php echo (getviewstatus($vo['status'])); ?></td>
 			            <td>
 			            	<a href="<?php echo U('admin/recommend/delete',array('id'=>$vo['id']));?>">删除</a>|<a href="<?php echo U('admin/recommend/edit',array('id'=>$vo['id']));?>">修改</a>
@@ -168,6 +168,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     <!-- /#wrapper -->
     <!-- Bootstrap Core JavaScript -->
-    <script src="/work/pv_shop/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
 </body>
 </html>

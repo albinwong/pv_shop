@@ -29,7 +29,7 @@ class LoginController extends Controller {
              $_SESSION['adminuser']=$name;
               // 查询这个用户的所有权限
              $mod = new Model();
-             $res = $mod->query('select n.action,n.method from user_role as ur,role_node as rn,node as n where ur.uid='.$name['id'].' and ur.rid=rn.rid and rn.nid=n.id');
+             $res = $mod->query('select n.action,n.method from user_role as ur,role_node as rn,node as n where ur.uid='.$name['role'].' and ur.rid=rn.rid and rn.nid=n.id');
              $nodelist = array();
              $nodelist['index'][] = 'index';
              $nodelist['login'][] = 'outlogin';

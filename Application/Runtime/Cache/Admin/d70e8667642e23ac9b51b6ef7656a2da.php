@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">直销商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            <td scope="row"><?php echo ($vo['oid']); ?></td>
 			            <td><?php echo ($vo['rec']); ?></td>
 			            <td><?php echo ($vo['tel']); ?></td>
-			            <td><?php echo date('Y年m月d日 h:i:s',$vo['otime']);?></td>
+			            <td><?php echo date('Y年m月d日 H:i:s',$vo['otime']);?></td>
 			            <td><?php echo (getorderstatus($vo['status'])); ?></td>
 			            <td>
 							<a href="<?php echo U('admin/orders/detail',array('id'=>$vo['oid']));?>">订单详情</a>

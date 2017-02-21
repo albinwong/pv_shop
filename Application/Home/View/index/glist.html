@@ -20,7 +20,7 @@
     	<img class="gszj_l" src="__PUBLIC__/Uploads/cate/{$zx.logo}" />
         <div class="gszj_m"></div>
         <div class="gszj_r">企业证照</div>
-        <div class="gszj_b">{$zx.name}（中国）日用品有限公司未经许可不得转载或链接</div>
+        <div class="gszj_b">汇盟通宝直销商城事业部</div>
     </div>
     <script type="text/javascript">
 $(function(){
@@ -37,7 +37,7 @@ $(function(){
                 if(mes!=1){
                    var res = eval(mes);
                    for(var i = 0;i<res.length;i++){
-                        var div = $('<a class="inal_ad" href="__URL__/detail?id='+res[i]['id']+'"><img class="inal_ad_pic" src="__PUBLIC__/Uploads/goods/'+res[i]['pic']+'"/><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
+                        var div = $('<a class="inal_ad" href="__URL__/detail?id='+res[i]['id']+'"><p class="inal_ad_pic"><img src="__PUBLIC__/Uploads/goods/'+res[i]['pic']+'"/></p><p class="inal_ad_p1">'+res[i]['gname']+'（'+res[i]['size']+'）</p><p class="inal_ad_p2">&yen;'+res[i]['price']+'</p><p class="inal_ad_p3">通粉优惠：&yen;'+res[i]['price']+'+'+res[i]['pv']+'PV</p></a><hr/>');
                         $('#goods').prepend(div);
                    }
                }else{

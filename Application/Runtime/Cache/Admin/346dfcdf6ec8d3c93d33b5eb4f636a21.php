@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">直销商城商品后台管理</a>
+                <a class="navbar-brand" href="index.html">直销商城后台管理</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-nav navbar-right">
@@ -179,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="form-group">
 							<label for="focusedinput" class="col-sm-2 control-label">积分价</label>
 							<div class="col-sm-8">
-								<input class="form-control1" disabled id="focusedinput" placeholder="请输入商品优惠价" type="text" name="pv">
+								<input class="form-control1" id="focusedinput" placeholder="请输入商品优惠价" type="text" name="pv">
 							</div>
 						</div>
 						<div class="form-group">
@@ -240,32 +240,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <script type="text/javascript">
 $(function(){
-	var price_i = 0;
-	var fprice_i = 0;
-	 $('input[name=price]').keyup(function(){
-	 	var price = $(this).val();
-	 	price_i = parseFloat(price);
-	 }).blur(function(){
-	 	var aaa = price_i - fprice_i;
-	 	if(aaa<0){
-			alert('商品正价不能小于优惠价');
-			$('input[name=pv]').val('');
-		}else{
-			$('input[name=pv]').val(aaa);
-		}
-	 });
-	 $('input[name=fprice]').keyup(function(){
-	 	var fprice = $(this).val();
-	 	fprice_i = parseFloat(fprice);
-	 }).blur(function(){
-	 	var aaa = price_i - fprice_i;
-		if(aaa<0){
-			alert('商品正价不能小于优惠价');
-			$('input[name=pv]').val('');
-		}else{
-			$('input[name=pv]').val(aaa);
-		}
-	});
+	// var price_i = 0;
+	// var fprice_i = 0;
+	//  $('input[name=price]').keyup(function(){
+	//  	var price = $(this).val();
+	//  	price_i = parseFloat(price);
+	//  }).blur(function(){
+	//  	var aaa = price_i - fprice_i;
+	//  	if(aaa<0){
+	// 		alert('商品正价不能小于优惠价');
+	// 		$('input[name=pv]').val('');
+	// 	}else{
+	// 		$('input[name=pv]').val(aaa);
+	// 	}
+	//  });
+	//  $('input[name=fprice]').keyup(function(){
+	//  	var fprice = $(this).val();
+	//  	fprice_i = parseFloat(fprice);
+	//  }).blur(function(){
+	//  	var aaa = price_i - fprice_i;
+	// 	if(aaa<0){
+	// 		alert('商品正价不能小于优惠价');
+	// 		$('input[name=pv]').val('');
+	// 	}else{
+	// 		$('input[name=pv]').val(aaa);
+	// 	}
+	// });
 
      var ue1 = UE.getEditor('editor1');
      var ue2 = UE.getEditor('editor2');
